@@ -3,6 +3,20 @@
     padding: 0;
 }
 
+@font-face {
+    font-family: 'HeadingFont';
+    src: url('./Playfair_Display/static/PlayfairDisplay-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'ParagraphFont';
+    src: url('./Crimson_Text/CrimsonText-Regular.ttf') format('truetype');
+}
+
+html {
+    font-size: 100%;
+}
+
 body {
     background-color: #151515;
 }
@@ -19,12 +33,49 @@ nav a:active {
     color: #d8c084;
 }
 
+h1 {
+    font-size: 2rem;
+}
+
 h2 {
     color: #ebd18d;
 }
 
 h3 {
     color: #eddfab;
+    font-size: 1.25rem;
+}
+
+a {
+    font-weight: 700;
+}
+
+figcaption {
+    font-style: italic;
+}
+
+nav a {
+    font-size: 1.25rem;
+    text-transform: lowercase;
+    text-decoration: none;
+}
+
+h3 a {
+    font-size: 1.1rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+nav a {
+    font-family: 'HeadingFont', serif;
+}
+
+h1,
+.name {
+    text-transform: uppercase;
+    letter-spacing: 0.5rem;
 }
 
 p,
@@ -32,8 +83,24 @@ figcaption {
     color: #efe8ae;
 }
 
+p,
+figcaption,
+a {
+    font-family: 'ParagraphFont', serif;
+    font-size: 1.25rem;
+}
+
 footer p {
     color: #d8c084;
+    font-size: 1rem;
+}
+
+.home-text{
+    font-size: 1rem;
+}
+
+.name {
+    font-size: 3rem;
 }
 
 a:link,
