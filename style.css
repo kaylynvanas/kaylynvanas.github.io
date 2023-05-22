@@ -113,3 +113,13 @@ a:hover,
 a:active {
     color: #f4cb6b;
 }
+
+.profile {
+    border-radius: 50%;
+    width: 20%;
+    height: auto;
+}
+
+.about-skills img {
+    height: 2.5rem;
+}
