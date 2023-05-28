@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 @font-face {
@@ -14,7 +15,7 @@
 }
 
 html {
-    font-size: 100%;
+    font-size: 120%;
 }
 
 body {
@@ -26,12 +27,26 @@ header {
     display:flex;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #151515;
+    height: 4rem;
+}
+
+header,
+footer {
+    padding: 1rem 2rem;
 }
 
 .home-section {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    padding-top: 7rem;
+    margin: 0 2rem;
 }
 
 .home-image {
@@ -51,7 +66,9 @@ footer {
 .contact-section {
     display: flex;
     flex-direction: column;
-    /* align-items: flex-start; */
+    justify-content: center;
+    padding-top: 4rem;
+    margin: 0 2rem;
 }
 
 .about-skills {
@@ -62,9 +79,8 @@ footer {
 figure {
     display: flex;
     align-items: center;
+    padding-top: 1.5rem;
 }
-
-
 
 h1,
 nav a:link,
@@ -75,7 +91,7 @@ nav a:active {
 }
 
 h1 {
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 h2 {
@@ -96,9 +112,10 @@ figcaption {
 }
 
 nav a {
-    font-size: 1.25rem;
+    font-size: 1rem;
     text-transform: lowercase;
     text-decoration: none;
+    padding-right: 1rem;
 }
 
 h3 a {
@@ -159,8 +176,25 @@ a:active {
     border-radius: 50%;
     width: 20%;
     height: auto;
+    padding-bottom: 1rem;
 }
 
 .about-skills img {
     height: 2.5rem;
 }
+
+.heading {
+    padding: 1rem 0;
+}
+
+.heading-content {
+    padding: 2rem 0;
+}
+
+.web-dev,
+.data-science,
+.general {
+    padding-right: 5rem;
+    padding-top: 1.5rem;
+}
+
