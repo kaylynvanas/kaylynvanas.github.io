@@ -216,8 +216,6 @@ a:active {
 .project3 {
     position: relative;
     text-align: center;
-    /* height: 13rem;
-    width: auto; */
     display: inline-flex;
 }
 
@@ -243,3 +241,27 @@ a:active {
 .project3 {
     display: none;
 }
+
+/* This is where the nav bar takes up more than one line */
+@media only screen and (max-width: 785px) {
+    header {
+        border-bottom: 1px solid #f4cb6b;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #151515;
+        height: 8rem;
+        z-index: 1;
+    }
+    h1 {
+        font-size: 1.9rem;
+    }
+    .home-section {
+        padding-top: 11rem;
+    }
+  }
