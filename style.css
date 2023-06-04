@@ -6,12 +6,12 @@
 
 @font-face {
     font-family: 'HeadingFont';
-    src: url('./Playfair_Display/static/PlayfairDisplay-Regular.ttf') format('truetype');
+    src: url('./font/Playfair_Display/static/PlayfairDisplay-Regular.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'ParagraphFont';
-    src: url('./Crimson_Text/CrimsonText-Regular.ttf') format('truetype');
+    src: url('./font/Crimson_Text/CrimsonText-Regular.ttf') format('truetype');
 }
 
 html {
@@ -33,6 +33,7 @@ header {
     width: 100%;
     background-color: #151515;
     height: 4rem;
+    z-index: 1;
 }
 
 header,
@@ -198,3 +199,47 @@ a:active {
     padding-top: 1.5rem;
 }
 
+.project1 img,
+.project2 img,
+.project3 img {
+    height: 13rem;
+    border: 1px solid lightgrey;
+}
+
+.projects {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.project1,
+.project2,
+.project3 {
+    position: relative;
+    text-align: center;
+    /* height: 13rem;
+    width: auto; */
+    display: inline-flex;
+}
+
+.project1-caption,
+.project2-caption,
+.project3-caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #efe8ae;
+    width: 100%;
+}
+
+.project1 figcaption,
+.project2 figcaption,
+.project3 figcaption {
+    color: #d6a861;
+    font-weight: 700;
+}
+
+.project2,
+.project3 {
+    display: none;
+}
