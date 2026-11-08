@@ -66,8 +66,8 @@ header {
     justify-content: space-between;
     align-items: center;
     gap: 1rem 2rem;
-    /* Side padding lines the name and nav up with main's 56rem column. */
-    padding: 1rem max(2rem, calc((100% - 56rem) / 2));
+    /* Name and nav sit out at the window edges, framing the centred content below. */
+    padding: 1rem 2.5rem;
     position: sticky;
     top: 0;
     z-index: 1;
@@ -79,9 +79,10 @@ header {
 }
 
 header .name {
-    font-size: clamp(1.75rem, 3vw, 2.75rem);
-    -webkit-text-stroke: 1.5px var(--ink);
-    text-shadow: 3px 3px 0 var(--ink);
+    font-size: 1.35rem;
+    /* Thinner outline and shadow at this size, so the black doesn't swamp the red. */
+    -webkit-text-stroke: .5px var(--ink);
+    text-shadow: 1.5px 1.5px 0 var(--ink);
     white-space: nowrap;
 }
 
@@ -125,8 +126,9 @@ main {
 }
 
 /* Poster hero: giant name, framed photo beside the intro. */
+/* More room above than below, so the intro doesn't crowd the header or float away from Experience. */
 .hero {
-    padding: 2rem 0 3rem;
+    padding: 4.5rem 0 1rem;
 }
 
 .hero-row {
