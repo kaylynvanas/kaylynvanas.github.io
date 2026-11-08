@@ -66,7 +66,8 @@ header {
     justify-content: space-between;
     align-items: center;
     gap: 1rem 2rem;
-    padding: 1rem 2rem;
+    /* Side padding lines the name and nav up with main's 56rem column. */
+    padding: 1rem max(2rem, calc((100% - 56rem) / 2));
     position: sticky;
     top: 0;
     z-index: 1;
@@ -116,15 +117,16 @@ nav a:hover {
     color: var(--red);
 }
 
+/* One column for every section, so all left edges line up. */
 main {
-    max-width: 62rem;
+    max-width: 60rem;
     margin: 0 auto;
     padding: 0 2rem;
 }
 
 /* Poster hero: giant name, framed photo beside the intro. */
 .hero {
-    padding: 2rem 3rem 3rem;
+    padding: 2rem 0 3rem;
 }
 
 .hero-row {
@@ -236,13 +238,7 @@ main {
 }
 
 .section {
-    max-width: 42rem;
-    margin: 0 auto;
     padding-top: 4rem;
-}
-
-.section.wide {
-    max-width: 56rem;
 }
 
 /* Same soft italic as the "Hello." line, so titles echo the intro. */
@@ -273,9 +269,11 @@ ul {
     border-top: 2px solid var(--ink);
 }
 
+/* Keeps lines readable now that the column is wider. */
 .job > div {
     display: grid;
     gap: .6rem;
+    max-width: 40rem;
 }
 
 .job .meta {
