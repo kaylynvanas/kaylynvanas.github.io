@@ -36,7 +36,7 @@
         - Restored ~104,000 lost Corporation Tax filing periods for ~9,800 clients.
         - Fixed client discovery after an HMRC change dropped success from 97.8% to 0.02%.
         - Cut large exports from hours to under 3 minutes.
-  tech: [Python, FastAPI, TypeScript, React, PostgreSQL, Airflow, Claude Agent SDK, LangGraph, AWS, Terraform]
+  tech: [Python, FastAPI, Flask, TypeScript, Node.js, PostgreSQL, Airflow, Playwright, React, Claude Agent SDK, Anthropic API, OpenAI API, LangGraph, LangSmith, AWS, Terraform, Kubernetes, Redis, GitHub, Sentry, New Relic, Postmark]
 
 - role: Data Analyst
   company: "&Wider"
@@ -63,4 +63,4 @@
       items:
         - Delivered Landscape Assessments across cocoa, sugar, logistics and agriculture on five continents.
         - Analysed survey data to report insights and trends to clients.
-  tech: [Python, pandas, SQL Server, Power BI, Azure]
+  tech: [Python, pandas, NumPy, SQL Server, Power BI, Looker Studio, Jotform, WhatsApp, WeChat, Telerivet, Twilio, Azure, Postman]
