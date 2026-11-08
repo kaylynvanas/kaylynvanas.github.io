@@ -1,5 +1,6 @@
 # Newest first. Copy a block to add a role. "end" can be "Present".
 # logo is optional: a square image in images/.
+# url is optional: the company or product site, linked under the title.
 # summary: one paragraph, or a list of them (one entry per paragraph).
 # groups: each becomes a small card under the summary; 2-4 groups of 2-4 items read best.
 #   A group with intro paragraphs or sections spans the full row, since it carries more text.
@@ -8,6 +9,7 @@
 #   An item can be text plus its own items, for nested bullets.
 - role: Software Engineer
   company: Adsum
+  url: https://opentax.adsum-works.com/
   logo: /images/adsum.jpeg
   start: Apr 2025
   end: Present
@@ -66,6 +68,7 @@
 
 - role: Data Analyst
   company: "&Wider"
+  url: https://www.andwider.com/
   logo: /images/andwider.jpeg
   start: Oct 2020
   end: Apr 2025

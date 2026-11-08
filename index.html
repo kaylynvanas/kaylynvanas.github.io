@@ -49,7 +49,7 @@
         <article>
           {% if job.logo %}<span class="logo rail-node"><img src="{{ job.logo }}" alt="{{ job.company }} logo" width="48" height="48"></span>{% else %}<span class="rail-node rail-dot" aria-hidden="true"></span>{% endif %}
           <p class="when">{{ job.start }} – {{ job.end }}</p>
-          <h3>{{ job.role }}, {{ job.company }}</h3>
+          <h3>{{ job.role }}, {{ job.company }}{% if job.url %} <a class="title-link" target="_blank" rel="noopener" href="{{ job.url }}" aria-label="Visit {{ job.company }}'s site" title="{{ job.url | remove: "https://" | remove: "http://" | remove: "www." | split: "/" | first }}"><i class="fa-solid fa-link" aria-hidden="true"></i></a>{% endif %}</h3>
           {% if job.summary.first %}{% for para in job.summary %}<p>{{ para }}</p>{% endfor %}{% elsif job.summary %}<p>{{ job.summary }}</p>{% endif %}
           {% if job.groups %}
           {% comment %} Half-width cards pair up; if their count is odd, the last one spans the row. {% endcomment %}

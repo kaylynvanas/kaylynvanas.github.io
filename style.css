@@ -542,6 +542,14 @@ h3 a {
     font-weight: inherit;
 }
 
+/* Small link icon after a job title: no underline, turns red on hover. */
+h3 .title-link {
+    margin-left: .3rem;
+    font-size: .75em;
+    vertical-align: .1em;
+    text-decoration: none;
+}
+
 /* Substack cards span the row; X posts pair up beneath. X renders each post in its own
    iframe, so only its width, link previews and thread are ours to set. */
 .posts {
