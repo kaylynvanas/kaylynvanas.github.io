@@ -112,6 +112,7 @@
           <p class="when">{{ item.when }}</p>
           <h3>{{ item.name }}</h3>
           <p>{{ item.org }}</p>
+          {% if item.credential %}<p class="links"><a target="_blank" rel="noopener" href="{{ item.credential }}">Verify credential ↗</a></p>{% endif %}
         </article>
         {% endfor %}
       </div>

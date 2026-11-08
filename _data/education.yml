@@ -1,13 +1,16 @@
 # Degrees, certifications and school on one timeline, newest first.
 # logo is optional: a square image in images/.
+# credential is optional: a link that verifies the certification.
 - name: "Microsoft Certified: Azure Data Fundamentals"
   org: Microsoft
   when: "2024"
+  credential: https://learn.microsoft.com/en-us/users/kaylynvanas-8593/credentials/ed1dc58945ffd3b1
   logo: /images/microsoft.jpeg
 
 - name: "Microsoft Certified: Azure Fundamentals"
   org: Microsoft
   when: "2022"
+  credential: https://learn.microsoft.com/en-us/users/kaylynvanas-8593/credentials/e099b63fdd76c52f
   logo: /images/microsoft.jpeg
 
 - name: Bachelor of Science in Informatics
