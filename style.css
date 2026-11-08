@@ -225,6 +225,13 @@ main {
     text-decoration: none;
 }
 
+/* Sized to match the Font Awesome glyphs; currentColor keeps the ink and red hover. */
+.socials .brand-icon {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+}
+
 .socials a:hover {
     color: var(--red);
     transform: translate(2px, 2px);
@@ -371,13 +378,9 @@ a:focus-visible {
     opacity: .55;
 }
 
-.substack {
-    width: 100%;
-    max-width: 30rem;
-    height: 20rem;
-    border: 2px solid var(--ink);
-    background: #ffffff;
-    margin-top: 1rem;
+/* Post titles are links but keep the light italic of the other titles. */
+h3 a {
+    font-weight: inherit;
 }
 
 footer {

@@ -31,13 +31,13 @@
           <p class="tagline">Hello.</p>
           {% for paragraph in site.about %}<p class="about">{{ paragraph }}</p>{% endfor %}
           <div class="actions">
-            {% if site.resume != "" %}<a class="button" href="{{ site.resume }}">Download resume (PDF)</a>{% endif %}
+            {% if site.resume != "" %}<a target="_blank" rel="noopener" class="button" href="{{ site.resume }}">Download resume (PDF)</a>{% endif %}
             <p class="socials">
               <a href="mailto:{{ site.email }}" aria-label="Email {{ site.email }}" title="{{ site.email }}"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a>
-              {% if site.linkedin != "" %}<a href="{{ site.linkedin }}" aria-label="LinkedIn" title="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>{% endif %}
-              <a href="https://github.com/{{ site.github }}" aria-label="GitHub" title="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
-              {% if site.x_handle != "" %}<a href="https://x.com/{{ site.x_handle }}" aria-label="X" title="X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>{% endif %}
-              {% if site.substack != "" %}<a href="{{ site.substack }}" aria-label="Substack" title="Substack"><i class="fa-solid fa-newspaper" aria-hidden="true"></i></a>{% endif %}
+              {% if site.linkedin != "" %}<a target="_blank" rel="noopener" href="{{ site.linkedin }}" aria-label="LinkedIn" title="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>{% endif %}
+              <a target="_blank" rel="noopener" href="https://github.com/{{ site.github }}" aria-label="GitHub" title="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+              {% if site.x_handle != "" %}<a target="_blank" rel="noopener" href="https://x.com/{{ site.x_handle }}" aria-label="X" title="X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>{% endif %}
+              {% if site.substack != "" %}<a target="_blank" rel="noopener" href="{{ site.substack }}" aria-label="Substack" title="Substack"><!-- Substack logo from Simple Icons (CC0); Font Awesome has none. --><svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg></a>{% endif %}
             </p>
           </div>
         </div>
@@ -74,8 +74,8 @@
             <p>{{ project.summary }}</p>
             {% if project.tech %}<p class="meta">{{ project.tech | join: " · " }}</p>{% endif %}
             <p class="links">
-              {% if project.url %}<a href="{{ project.url }}">Live</a>{% endif %}
-              {% if project.repo %}<a href="{{ project.repo }}">Code</a>{% endif %}
+              {% if project.url %}<a target="_blank" rel="noopener" href="{{ project.url }}">Live</a>{% endif %}
+              {% if project.repo %}<a target="_blank" rel="noopener" href="{{ project.repo }}">Code</a>{% endif %}
             </p>
           </div>
         </article>
@@ -102,8 +102,15 @@
     {% if site.substack != "" %}
     <section class="section" id="writing">
       <h2 class="heading">Writing</h2>
-      <p>I write on Substack. <a href="{{ site.substack }}">Read the latest posts</a>.</p>
-      <iframe src="{{ site.substack }}/embed" title="Subscribe to my Substack" class="substack" loading="lazy"></iframe>
+      {% for post in site.data.substack %}
+      <article class="job">
+        <p class="meta">{{ post.date }}</p>
+        <div>
+          <h3><a target="_blank" rel="noopener" href="{{ post.url }}">{{ post.title }}</a></h3>
+          {% if post.excerpt != "" %}<p>{{ post.excerpt }}</p>{% endif %}
+        </div>
+      </article>
+      {% endfor %}
     </section>
     {% endif %}
 
@@ -111,7 +118,7 @@
     <section class="section" id="x">
       <h2 class="heading">On X</h2>
       <!-- X's widget replaces this link with the feed; if it fails to load, the link stays. -->
-      <a class="twitter-timeline" data-theme="light" data-height="600" href="https://x.com/{{ site.x_handle }}">Posts by @{{ site.x_handle }}</a>
+      <a target="_blank" rel="noopener" class="twitter-timeline" data-theme="light" data-height="600" href="https://x.com/{{ site.x_handle }}">Posts by @{{ site.x_handle }}</a>
       <script async src="https://platform.twitter.com/widgets.js"></script>
     </section>
     {% endif %}

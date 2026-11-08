@@ -21,9 +21,10 @@ linkedin: https://www.linkedin.com/in/kaylyn-van-as-a99678129/
 resume: /resume.pdf
 
 # Your Substack address, e.g. https://kaylyn.substack.com
-substack: ""
+substack: "https://kaylynvanas.substack.com"
 # Your X handle without the @
 x_handle: ""
 
 exclude:
   - README.txt
+  - scripts
