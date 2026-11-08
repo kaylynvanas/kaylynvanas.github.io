@@ -225,13 +225,6 @@ main {
     text-decoration: none;
 }
 
-/* Sized to match the Font Awesome glyphs; currentColor keeps the ink and red hover. */
-.socials .brand-icon {
-    width: 1em;
-    height: 1em;
-    fill: currentColor;
-}
-
 .socials a:hover {
     color: var(--red);
     transform: translate(2px, 2px);
