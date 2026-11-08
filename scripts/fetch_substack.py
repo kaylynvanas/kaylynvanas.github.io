@@ -17,6 +17,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 MAX_POSTS = 5
 EXCERPT_CHARS = 200
+INTRO_CHARS = 280
+CONTENT = "{http://purl.org/rss/1.0/modules/content/}encoded"
+CREATOR = "{http://purl.org/dc/elements/1.1/}creator"
 
 
 def substack_url():
@@ -24,10 +27,16 @@ def substack_url():
     return match.group(1).strip().rstrip("/") if match else ""
 
 
-def excerpt(raw):
+def excerpt(raw, limit=EXCERPT_CHARS):
     text = html.unescape(re.sub(r"<[^>]+>", " ", raw or ""))
-    text = " ".join(text.split())
-    return text if len(text) <= EXCERPT_CHARS else text[:EXCERPT_CHARS].rsplit(" ", 1)[0] + "…"
+    # Tags become spaces so words don't merge; then drop the gap that leaves before punctuation.
+    text = re.sub(r"\s+([.,;:!?])", r"\1", " ".join(text.split()))
+    return text if len(text) <= limit else text[:limit].rsplit(" ", 1)[0] + "…"
+
+
+def first_paragraph(body):
+    match = re.search(r"<p[^>]*>(.*?)</p>", body or "", re.S)
+    return excerpt(match.group(1), INTRO_CHARS) if match else ""
 
 
 def parse(feed_xml):
@@ -37,8 +46,10 @@ def parse(feed_xml):
         posts.append({
             "title": (item.findtext("title") or "").strip(),
             "url": (item.findtext("link") or "").strip(),
-            "date": published.strftime("%-d %b %Y"),
-            "excerpt": excerpt(item.findtext("description")),
+            "date": published.strftime("%b %-d, %Y"),
+            "author": (item.findtext(CREATOR) or "").strip(),
+            "subtitle": excerpt(item.findtext("description")),
+            "intro": first_paragraph(item.findtext(CONTENT)),
         })
     return posts[:MAX_POSTS]
 

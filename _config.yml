@@ -22,8 +22,10 @@ resume: /resume.pdf
 
 # Your Substack address, e.g. https://kaylyn.substack.com
 substack: "https://kaylynvanas.substack.com"
+# Your Substack profile photo, shown on the post cards (the feed doesn't include it).
+substack_avatar: "https://substackcdn.com/image/fetch/w_96,h_96,c_fill,f_auto,q_auto:good/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F93613d57-d405-4e1b-a81b-18f30cb15784_484x484.jpeg"
 # Your X handle without the @
-x_handle: ""
+x_handle: "kaylynvanas"
 
 exclude:
   - README.txt

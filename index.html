@@ -99,27 +99,32 @@
       {% endfor %}
     </section>
 
-    {% if site.substack != "" %}
+    {% if site.substack != "" or site.data.x_posts.size > 0 %}
     <section class="section" id="writing">
       <h2 class="heading">Writing</h2>
-      {% for post in site.data.substack %}
-      <article class="job">
-        <p class="meta">{{ post.date }}</p>
-        <div>
-          <h3><a target="_blank" rel="noopener" href="{{ post.url }}">{{ post.title }}</a></h3>
-          {% if post.excerpt != "" %}<p>{{ post.excerpt }}</p>{% endif %}
-        </div>
-      </article>
-      {% endfor %}
-    </section>
-    {% endif %}
-
-    {% if site.x_handle != "" %}
-    <section class="section" id="x">
-      <h2 class="heading">On X</h2>
-      <!-- X's widget replaces this link with the feed; if it fails to load, the link stays. -->
-      <a target="_blank" rel="noopener" class="twitter-timeline" data-theme="light" data-height="600" href="https://x.com/{{ site.x_handle }}">Posts by @{{ site.x_handle }}</a>
-      <script async src="https://platform.twitter.com/widgets.js"></script>
+      <div class="posts">
+        {% assign publication = site.substack | remove: "https://" | remove: "http://" %}
+        {% for post in site.data.substack %}
+        <!-- Substack has no post embed, so this card is built from the saved feed, laid out like a Substack post header. -->
+        <a class="substack-card" target="_blank" rel="noopener" href="{{ post.url }}">
+          <span class="sc-pub">{{ publication }}</span>
+          <span class="sc-title">{{ post.title }}</span>
+          {% if post.subtitle != "" %}<span class="sc-sub">{{ post.subtitle }}</span>{% endif %}
+          <span class="sc-byline">
+            <span><span class="sc-author">{{ post.author | default: site.name }}</span><span class="sc-date">{{ post.date }}</span></span>
+            {% if site.substack_avatar %}<img src="{{ site.substack_avatar }}" alt="" width="48" height="48">{% endif %}
+          </span>
+          {% if post.intro != "" %}<span class="sc-intro">{{ post.intro }}</span>{% endif %}
+        </a>
+        {% endfor %}
+        <!-- X's script turns each link into a post card; if it fails to load, the links stay.
+             shortcut: hand-picked posts only, X's timeline embed doesn't show to logged-out
+             visitors and its API is paid; revisit if either changes. -->
+        {% for post in site.data.x_posts %}
+        <blockquote class="twitter-tweet" data-dnt="true" data-cards="hidden" data-conversation="none"><a target="_blank" rel="noopener" href="{{ post }}">View this post on X</a></blockquote>
+        {% endfor %}
+      </div>
+      {% if site.data.x_posts.size > 0 %}<script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>{% endif %}
     </section>
     {% endif %}
 
