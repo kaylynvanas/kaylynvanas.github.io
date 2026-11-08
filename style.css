@@ -294,11 +294,6 @@ ul {
     gap: .6rem;
 }
 
-/* Cards use the full width; running text keeps a readable line length. */
-.rail article > p {
-    max-width: 40rem;
-}
-
 /* Each role's detail as small themed cards, all visible. */
 .groups {
     display: grid;
@@ -316,11 +311,6 @@ ul {
     border: 2px solid var(--ink);
 }
 
-/* An odd last card spans the row instead of sitting alone in half of it. */
-.group:last-child:nth-child(odd) {
-    grid-column: 1 / -1;
-}
-
 .group h4 {
     font-family: var(--label);
     font-weight: 700;
@@ -330,8 +320,35 @@ ul {
     color: var(--red);
 }
 
-.group ul {
-    font-size: .9rem;
+.group ul,
+.group p {
+    font-size: .82rem;
+}
+
+/* A card with intro paragraphs or sections carries more text, so it takes the whole row. */
+.group-wide {
+    grid-column: 1 / -1;
+}
+
+/* Nested bullets sit a little in from their parent. */
+.group ul ul {
+    padding-top: .3rem;
+    list-style: circle;
+}
+
+/* Bold lead-in phrases inside card bullets; 600 is the heaviest Newsreader weight loaded. */
+.group strong {
+    font-weight: 600;
+}
+
+/* Lead line introducing each part of a card, in the same soft italic as the titles. */
+.group .group-lead {
+    padding-top: .5rem;
+    font-family: var(--soft);
+    font-style: italic;
+    font-weight: 300;
+    font-variation-settings: 'SOFT' 100;
+    font-size: .95rem;
 }
 
 /* Tech stack as logo + name, spaced out with no pills. */

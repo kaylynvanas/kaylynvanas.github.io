@@ -1,66 +1,99 @@
 # Newest first. Copy a block to add a role. "end" can be "Present".
 # logo is optional: a square image in images/.
+# summary: one paragraph, or a list of them (one entry per paragraph).
 # groups: each becomes a small card under the summary; 2-4 groups of 2-4 items read best.
+#   A group with intro paragraphs or sections spans the full row, since it carries more text.
+#   sections (each a lead line plus items) split a big card into parts. wide: true forces full width;
+#   wide: false keeps a card with an intro at half width.
+#   An item can be text plus its own items, for nested bullets.
 - role: Software Engineer
   company: Adsum
   logo: /images/adsum.jpeg
   start: Apr 2025
   end: Present
-  summary: >-
-    I build OpenTax, a UK fintech SaaS that pulls tax data from HMRC, Xero and QuickBooks
-    so accountants can track what every client owes. 830+ practices have onboarded, and it
-    was nominated for two Digital Disruptor awards in 2025. I joined as a backend engineer
-    and now own features end to end across the stack.
+  summary:
+    - >-
+      I joined Adsum, a UK fintech startup, as a backend engineer. Since joining, I've been
+      delivering and owning features end to end across the entire stack.
+    - >-
+      I build OpenTax, a SaaS platform that pulls UK tax data directly from HMRC (the UK tax
+      authority, equivalent to South Africa's SARS) and from Xero and QuickBooks (accounting
+      software), so that accountants can track what every client owes. 830+ UK accountancy
+      practices have onboarded, and our month-end agents have run thousands of checks on real client ledgers.
   groups:
-    - title: AI agents
-      items:
-        - Core engineer on two generations of customer-facing AI agents, both in production with real accounting firms.
-        - "Multi-agent month-end reviews on the Claude Agent SDK: payroll, marketplace payouts, assets and VAT."
-        - Raised VAT check accuracy from under 50% to over 90% with golden datasets and benchmarks.
-        - MCP tools that log in to HMRC and fetch live tax data; LangSmith tracing.
     - title: Production ownership
       items:
-        - "Main production-support engineer: hundreds of incidents from customer report to post-mortem."
-        - Built a pipeline health bot that triages nightly Airflow failures and drafts fix PRs.
-        - Co-owner of the OpenTax product backlog since October 2026.
-        - Wrote the structured-logging standard and runbooks for the support knowledge base.
-    - title: Platform features
-      items:
-        - Public REST API with usage tracking and rate limiting (Redis, AWS WAF, Terraform).
-        - Role-based access control and a "time machine" for any past balance.
-        - In-house authenticator so automated HMRC logins survived HMRC's move to MFA.
-        - "Privacy-compliant analytics: PostHog in, ad trackers out."
+        - "<strong>Main production-support engineer</strong>: hundreds of incidents from customer report to post-mortem."
+        - <strong>Built a pipeline health bot</strong> that triages nightly Airflow failures and drafts fix PRs.
+        - <strong>Co-owner of the OpenTax product backlog</strong> since October 2026.
+        - <strong>Leading requirements and technical communication</strong> with a partner bank on an embedded finance project within OpenTax.
+        - <strong>Wrote the structured-logging standard and runbooks</strong> for the support knowledge base.
     - title: Reliability and data integrity
       items:
-        - Found and fixed £1.8m of missing year-end payroll tax adjustments across 798 clients.
-        - Restored ~104,000 lost Corporation Tax filing periods for ~9,800 clients.
-        - Fixed client discovery after an HMRC change dropped success from 97.8% to 0.02%.
-        - Cut large exports from hours to under 3 minutes.
-  tech: [Python, FastAPI, Flask, TypeScript, Node.js, PostgreSQL, Airflow, Playwright, React, Claude Agent SDK, Anthropic API, OpenAI API, LangGraph, LangSmith, AWS, Terraform, Kubernetes, Redis, GitHub, Sentry, New Relic, Postmark]
+        - <strong>Found and fixed £1.8m</strong> of missing year-end payroll tax adjustments across ~800 clients.
+        - <strong>Restored ~104,000 lost Corporation Tax filing periods</strong> for ~9,800 clients.
+        - <strong>Fixed client discovery</strong> after an HMRC change dropped success from 97.8% to 0.02%.
+        - <strong>Built server-side pagination</strong> so practices with tens of thousands of clients load and filter them quickly,
+          and cut large exports from hours to under 3 minutes.
+    - title: SaaS features
+      wide: true
+      items:
+        - <strong>Security and access control</strong>. I built role-based access so practices can group clients by team or partner, and staff see only the clients they're permitted to. I also added MFA and lockouts on login and bank-detail changes for InstantVAT, Adsum's VAT-refund product.
+        - <strong>In-house authenticator for automated HMRC logins</strong>. When HMRC introduced MFA, I built an authenticator that let the platform keep collecting client data without interruption.
+        - <strong>Tax data features</strong>. I built a "time machine" that shows what each client owed HMRC on any past date, across tax types, and the Self Assessment (personal income tax) dashboard. I also built duplicate-client merging, which combines records for one business held under different tax types.
+        - <strong>Client reminders and alerts</strong>. Practices can edit their own tax-due email templates, with sanitised input and locked HMRC bank details to prevent payment fraud. They can see each client's upcoming reminders 30 days ahead, and admins get an email when new clients appear on their account.
+        - <strong>Public REST API for partners and integrators</strong>. It has client and tax-data endpoints, usage tracking, monitoring, and rate limiting.
+    - title: "AI agent: August 2025"
+      wide: false
+      intro:
+        - Chat assistant that drafts tax payment reminder emails to clients.
+      items:
+        - <strong>AI drafting of client tax payment reminder emails</strong>. I wrote tax-specific prompts and personalised greetings, and built controls that let accountants give the AI their own instructions.
+        - <strong>MCP tools</strong> for live HMRC data. The agent logs in to HMRC and fetches live tax data, with session handling.
+        - <strong>Agent database design</strong>. I designed the schema that stores conversations, drafts and agent state.
+        - <strong>Live streaming to the UI</strong>. I built WebSocket streaming so accountants see the agent's progress and drafts as they happen.
+        - <strong>Tracing and monitoring</strong>. I added LangSmith tracing for debugging and monitoring agent runs.
+    - title: "AI agents: April 2026"
+      wide: false
+      intro:
+        - Multi-agent month-end bookkeeping review.
+      items:
+        - "<strong>Built AI agents and sub-agents</strong> that each review one area of a client's books: payroll reconciliation, marketplace payouts (Shopify, Stripe, Amazon, eBay) against the accounting ledger, spending that should have been recorded as an asset rather than an expense, and numerous VAT checks."
+        - <strong>Raised agent accuracy</strong> from under 50% to over 90% with golden datasets and benchmarks designed to test for accuracy and consistency.
+        - <strong>Per-client memory and reporting</strong>. Client context goes into the agent's long-term memory, and each client gets an AI-generated PDF month-end report.
+        - <strong>Operations and UI</strong>. I built Xero API rate-limit alerts and led two full-stack UI overhauls.
+  tech: [Python, FastAPI, Flask, TypeScript, Node.js, PostgreSQL, Airflow, Playwright, React, Claude Agent SDK, LangGraph, LangSmith, AWS, Terraform, Kubernetes, Redis, GitHub, Sentry, New Relic, Postmark]
 
 - role: Data Analyst
   company: "&Wider"
   logo: /images/andwider.jpeg
   start: Oct 2020
   end: Apr 2025
-  summary: >-
-    An early technical hire at a Dutch social-impact startup. I helped build its two
-    products from scratch: Engage, a web app that lets global brands monitor human-rights
-    impacts across their supply chains, and Landscape Assessments, multi-brand studies
-    that benchmark human-rights risk across a sourcing region.
+  summary:
+    - >-
+      I was an early technical hire in a lean tech team at &Wider, a Dutch social impact
+      startup. I worked across data engineering, analytics engineering, business analysis,
+      data analysis and QA, and helped build its two products from scratch.
+    - >-
+      Engage is a progressive web app that lets global brands monitor human-rights impacts and
+      working conditions across their supply chains. Landscape Assessments are multi-brand
+      studies that benchmark human-rights risk across a shared sourcing region or sector.
   groups:
     - title: Data engineering
       items:
-        - Owned the data behind every client report and dashboard.
-        - Designed the database behind Engage.
-        - ETL pipelines in Python and SQL over 1 million+ worker-survey data points from 70+ countries.
-    - title: Product and quality
-      items:
-        - Designed the Engage user journey, user stories and wireframes.
-        - Designed the supplier risk scoring and the anonymity rules that protect workers.
-        - QA-tested features before release.
+        - "<strong>Owned the data behind every client report and dashboard</strong>: its accuracy, structure and delivery."
+        - <strong>Designed the database and data structures</strong> behind Engage.
+        - <strong>Designed, built and maintained ETL pipelines</strong> in Python and SQL.
+        - "<strong>Collected, cleaned and transformed highly sensitive, anonymised worker-survey data</strong> from WhatsApp, WeChat, online forms and automated phone surveys (IVR): over 1 million data points from respondents across 70+ countries."
     - title: Analytics and reporting
       items:
-        - Delivered Landscape Assessments across cocoa, sugar, logistics and agriculture on five continents.
-        - Analysed survey data to report insights and trends to clients.
+        - <strong>Analysed survey data</strong> to report insights and trends to clients.
+        - <strong>Built Landscape Assessments</strong>, a paid &Wider product in which several global brands jointly fund a survey of a shared sourcing region or sector. Each brand benchmarks its own suppliers against the aggregated results to see how its human-rights risk compares. I delivered assessments covering cocoa, sugar, logistics and agriculture across five continents.
+    - title: Product and quality
+      items:
+        - <strong>Designed the full Engage user journey</strong>, from login to the data dashboards, and wrote the user stories and wireframes behind it.
+        - <strong>Designed the supplier risk scoring and traffic-light system</strong> that flags high- and low-risk suppliers.
+        - "<strong>Designed the anonymity rules that protect workers</strong>: dashboard filters such as gender switch off automatically when a group is small enough to identify someone (e.g. the only woman at a site)."
+        - <strong>QA-tested features and fixes</strong> before release.
+        - <strong>Documented team workflows and processes</strong>.
   tech: [Python, pandas, NumPy, SQL Server, Power BI, Looker Studio, Jotform, WhatsApp, WeChat, Telerivet, Twilio, Azure, Postman]

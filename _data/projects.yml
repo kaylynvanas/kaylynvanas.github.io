@@ -6,32 +6,27 @@
     looks each food up in a South African food database, asks only the questions that change
     the numbers, and reports just the nutrients you follow. It reports numbers and never gives
     dietary advice.
-  tech: [Python, FastAPI, PostgreSQL, Claude API]
 
 - name: OpenTax AI Agents
   summary: >-
     A multi-agent system on the Claude Agent SDK that runs month-end bookkeeping reviews on
     live client ledgers: payroll, marketplace payouts, VAT and asset checks, with a PDF report
     per client. Built at Adsum; it has run thousands of checks.
-  tech: [Claude Agent SDK, Python, Xero API]
 
 - name: OpenTax
   summary: >-
     A SaaS platform that pulls UK tax data from HMRC, Xero and QuickBooks so accountants can
     track what every client owes. 830+ practices have onboarded, and it was nominated for two
     Digital Disruptor awards in 2025. Built at Adsum.
-  tech: [Python, FastAPI, TypeScript, React, PostgreSQL, Airflow, AWS]
 
 - name: Landscape Assessments
   summary: >-
     Multi-brand studies in which global brands jointly fund a survey of a shared sourcing region
     or sector, then benchmark their own suppliers' human-rights risk against the results.
     Delivered across cocoa, sugar, logistics and agriculture on five continents. Built at &Wider.
-  tech: [Python, pandas, SQL Server, Power BI]
 
 - name: Engage
   summary: >-
     A progressive web app that lets global brands monitor human-rights impacts and working
     conditions across their supply chains. I designed its database, user journey, supplier risk
     scoring and the anonymity rules that protect workers. Built at &Wider.
-  tech: [Python, SQL Server, Azure]
