@@ -1,0 +1,19 @@
+# Logo for each name used in a `tech:` list. A name missing here just shows without a logo.
+# Devicon (MIT) for most; Simple Icons (CC0) where Devicon has none. LangGraph uses its maker
+# LangChain's mark; Power BI comes from an older Simple Icons release that still includes it.
+Python: https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/python/python-original.svg
+FastAPI: https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/fastapi/fastapi-original.svg
+TypeScript: https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/typescript/typescript-original.svg
+React: https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/react/react-original.svg
+PostgreSQL: https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/postgresql/postgresql-original.svg
+Airflow: https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/apacheairflow/apacheairflow-original.svg
+AWS: https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/amazonwebservices/amazonwebservices-original-wordmark.svg
+Terraform: https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/terraform/terraform-original.svg
+pandas: https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/pandas/pandas-original.svg
+SQL Server: https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/microsoftsqlserver/microsoftsqlserver-original.svg
+Azure: https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/azure/azure-original.svg
+Claude Agent SDK: https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/claude.svg
+Claude API: https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/claude.svg
+LangGraph: https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/langchain.svg
+Xero API: https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/xero.svg
+Power BI: https://cdn.jsdelivr.net/npm/simple-icons@11.0.0/icons/powerbi.svg

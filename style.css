@@ -270,32 +270,7 @@ ul {
     padding: .25rem 0 .5rem;
 }
 
-.job {
-    display: grid;
-    grid-template-columns: 8rem 1fr;
-    gap: 1.5rem;
-    padding: 1.5rem 0;
-    border-top: 2px solid var(--ink);
-}
-
-/* Rules divide entries, not the heading from the first one. */
-.heading + .job {
-    border-top: 0;
-    padding-top: 0;
-}
-
-/* Keeps lines readable now that the column is wider. */
-.job > div {
-    display: grid;
-    gap: .6rem;
-    max-width: 40rem;
-}
-
-.job .meta {
-    padding-top: .3rem;
-}
-
-/* Experience as a vertical rail: one ink line, each company's logo sits on it as a stop. */
+/* Experience and Education as a vertical rail: one ink line, each logo sits on it as a stop. */
 .rail {
     position: relative;
     display: grid;
@@ -359,6 +334,29 @@ ul {
     font-size: .9rem;
 }
 
+/* Tech stack as logo + name, spaced out with no pills. */
+.stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .55rem 1.3rem;
+    padding: .3rem 0 0;
+    list-style: none;
+    font-size: .85rem;
+}
+
+.stack li {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+}
+
+.stack img {
+    width: 1.05rem;
+    height: 1.05rem;
+    /* A faint ink edge keeps pale logos (React's light cyan) visible on the peach. */
+    filter: drop-shadow(0 0 .6px rgba(28, 23, 23, .55));
+}
+
 .rail .rail-node {
     position: absolute;
     left: -4rem;
@@ -392,8 +390,14 @@ ul {
     width: 2.5rem;
     height: 2.5rem;
     overflow: hidden;
+    background: #ffffff;
     border: 2px solid var(--ink);
     box-shadow: 3px 3px 0 var(--ink);
+}
+
+/* Education entries are a line or two each, so their stops sit closer together. */
+#education .rail {
+    gap: 1.75rem;
 }
 
 .logo img {
@@ -435,7 +439,7 @@ ul {
     box-shadow: 6px 6px 0 var(--ink);
 }
 
-.card img {
+.card > img {
     display: block;
     width: 100%;
     aspect-ratio: 16 / 10;
@@ -689,11 +693,8 @@ footer {
     .hero {
         padding: 1rem 0 2rem;
     }
-    .job, .cards, .posts, .groups {
+    .cards, .posts, .groups {
         grid-template-columns: 1fr;
-    }
-    .job {
-        gap: 0;
     }
     .heading {
         font-size: 2.1rem;
