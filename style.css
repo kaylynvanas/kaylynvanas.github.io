@@ -8,7 +8,7 @@
     --body: 'Newsreader', Georgia, serif;
     --soft: 'Fraunces', Georgia, serif;
     /* Sticky header's height, so the intro can fill exactly the rest of the first screen. */
-    --header-h: 3.35rem;
+    --header-h: 3.65rem;
     --grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' seed='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/><feComponentTransfer><feFuncR type='linear' slope='2.2' intercept='-.6'/><feFuncG type='linear' slope='2.2' intercept='-.6'/><feFuncB type='linear' slope='2.2' intercept='-.6'/></feComponentTransfer></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
 
@@ -81,10 +81,10 @@ header {
 }
 
 header .name {
-    font-size: 1.35rem;
+    font-size: clamp(1.5rem, 2.2vw, 2rem);
     /* Thinner outline and shadow at this size, so the black doesn't swamp the red. */
-    -webkit-text-stroke: .5px var(--ink);
-    text-shadow: 1.5px 1.5px 0 var(--ink);
+    -webkit-text-stroke: .75px var(--ink);
+    text-shadow: 2px 2px 0 var(--ink);
     white-space: nowrap;
 }
 
