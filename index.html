@@ -9,19 +9,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cherry+Swash:wght@700&family=Archivo:wdth,wght@100..125,700&family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cherry+Swash:wght@700&family=Archivo:wdth,wght@100..125,700&family=Fraunces:ital,opsz,wght,SOFT@1,9..144,300,100&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,600;1,6..72,300&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
   <link href="./style.css" rel="stylesheet">
 </head>
 <body>
   <header>
-    <h1 class="name">{{ site.name }}</h1>
+    <h1 class="name"><a href="#about">{{ site.name }}</a></h1>
     <nav>
-      <a href="#about">About</a>
       <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
       <a href="#education">Education</a>
       {% if site.substack != "" %}<a href="#writing">Writing</a>{% endif %}
-      <a href="#contact">Contact</a>
     </nav>
   </header>
   <main>
@@ -29,9 +28,18 @@
       <div class="hero-row">
         <div class="profile"><img src="./images/profile.jpg" alt="Kaylyn Van As"></div>
         <div class="hero-text">
-          <p class="tagline">{{ site.tagline }}</p>
-          <p>{{ site.about }}</p>
-          {% if site.resume != "" %}<a class="button" href="{{ site.resume }}">Download resume (PDF)</a>{% endif %}
+          <p class="tagline">Hello.</p>
+          {% for paragraph in site.about %}<p class="about">{{ paragraph }}</p>{% endfor %}
+          <div class="actions">
+            {% if site.resume != "" %}<a class="button" href="{{ site.resume }}">Download resume (PDF)</a>{% endif %}
+            <p class="socials">
+              <a href="mailto:{{ site.email }}" aria-label="Email {{ site.email }}" title="{{ site.email }}"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a>
+              {% if site.linkedin != "" %}<a href="{{ site.linkedin }}" aria-label="LinkedIn" title="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>{% endif %}
+              <a href="https://github.com/{{ site.github }}" aria-label="GitHub" title="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+              {% if site.x_handle != "" %}<a href="https://x.com/{{ site.x_handle }}" aria-label="X" title="X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>{% endif %}
+              {% if site.substack != "" %}<a href="{{ site.substack }}" aria-label="Substack" title="Substack"><i class="fa-solid fa-newspaper" aria-hidden="true"></i></a>{% endif %}
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -108,16 +116,9 @@
     </section>
     {% endif %}
 
-    <section class="section" id="contact">
-      <h2 class="heading">Contact</h2>
-      <dl class="contact-details">
-        <dt>Email</dt><dd><a href="mailto:{{ site.email }}">{{ site.email }}</a></dd>
-        {% if site.linkedin != "" %}<dt>LinkedIn</dt><dd><a href="{{ site.linkedin }}">LinkedIn profile</a></dd>{% endif %}
-        <dt>GitHub</dt><dd><a href="https://github.com/{{ site.github }}">github.com/{{ site.github }}</a></dd>
-        {% if site.x_handle != "" %}<dt>X</dt><dd><a href="https://x.com/{{ site.x_handle }}">@{{ site.x_handle }}</a></dd>{% endif %}
-        {% if site.substack != "" %}<dt>Substack</dt><dd><a href="{{ site.substack }}">{{ site.substack | remove: "https://" }}</a></dd>{% endif %}
-      </dl>
-    </section>
   </main>
+  <footer>
+    <a class="button" href="#about">Back to top ↑</a>
+  </footer>
 </body>
 </html>
