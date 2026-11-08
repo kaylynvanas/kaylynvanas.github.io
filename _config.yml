@@ -17,7 +17,7 @@ email: kaylynvanas@gmail.com
 github: kaylynvanas
 linkedin: https://www.linkedin.com/in/kaylyn-van-as-a99678129/
 
-# Drop your CV in the repo root as resume.pdf.
+# Drop your resume in the repo root as resume.pdf.
 resume: /resume.pdf
 # Small print at the foot of every page.
 footer_note: >-
@@ -25,7 +25,7 @@ footer_note: >-
   Please handle it in line with POPIA.
 # Shown in a confirm step before the resume downloads. Plain-language wording, not legal advice.
 resume_notice: >-
-  My CV contains personal information protected under South Africa's Protection of Personal
+  My résumé contains personal information protected under South Africa's Protection of Personal
   Information Act (POPIA). Please use it only to consider me for roles, don't share it with
   third parties without my consent, and delete it once it's no longer needed.
 

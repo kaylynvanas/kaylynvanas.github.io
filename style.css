@@ -653,7 +653,7 @@ footer {
     padding-top: .5rem;
 }
 
-/* Close × in the dialog's top-right corner, framed like the contact icons. */
+/* Plain close × in the dialog's top-right corner; the box keeps a comfortable click area. */
 .dialog-close {
     position: absolute;
     top: .9rem;
@@ -663,11 +663,10 @@ footer {
     width: 1.9rem;
     height: 1.9rem;
     padding: 0;
-    background: var(--cloud);
+    background: none;
     color: var(--ink);
-    border: 2px solid var(--ink);
-    box-shadow: 2px 2px 0 var(--ink);
-    font-size: .85rem;
+    border: 0;
+    font-size: 1.1rem;
     cursor: pointer;
 }
 
