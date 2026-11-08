@@ -94,8 +94,8 @@
             <p>{{ project.summary }}</p>
             
             <p class="links">
-              {% if project.url %}<a target="_blank" rel="noopener" href="{{ project.url }}">Live</a>{% endif %}
-              {% if project.repo %}<a target="_blank" rel="noopener" href="{{ project.repo }}">Code</a>{% endif %}
+              {% if project.url %}<a target="_blank" rel="noopener" href="{{ project.url }}">{{ project.url | remove: "https://" | remove: "http://" }} ↗</a>{% endif %}
+              {% if project.repo %}<a target="_blank" rel="noopener" href="{{ project.repo }}">GitHub ↗</a>{% endif %}
             </p>
           </div>
         </article>

@@ -288,6 +288,18 @@ ul {
     background: var(--ink);
 }
 
+/* A small dot ends the line, centred on its bottom tip. */
+.rail::after {
+    content: "";
+    position: absolute;
+    left: calc(1.2rem + 1px - .3rem);
+    bottom: calc(.5rem - .3rem);
+    width: .6rem;
+    height: .6rem;
+    border-radius: 50%;
+    background: var(--ink);
+}
+
 .rail article {
     position: relative;
     display: grid;
@@ -736,6 +748,9 @@ footer {
     }
     .rail::before {
         left: .9rem;
+    }
+    .rail::after {
+        left: calc(.9rem + 1px - .3rem);
     }
     .rail .rail-node {
         left: -2.75rem;

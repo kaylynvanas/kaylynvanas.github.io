@@ -1,4 +1,5 @@
-# Copy a block to add a project. url, repo and image are optional; leave one out to hide it.
+# Personal projects only; work lives under Experience. Copy a block to add one.
+# url, repo and image are optional; leave one out to hide it.
 # image: put a screenshot in images/ and point at it, e.g. /images/actually.png
 - name: actually.
   summary: >-
@@ -6,27 +7,11 @@
     looks each food up in a South African food database, asks only the questions that change
     the numbers, and reports just the nutrients you follow. It reports numbers and never gives
     dietary advice.
+  url: https://askactually.co.za
 
-- name: OpenTax AI Agents
+- name: Claude Code skills
   summary: >-
-    A multi-agent system on the Claude Agent SDK that runs month-end bookkeeping reviews on
-    live client ledgers: payroll, marketplace payouts, VAT and asset checks, with a PDF report
-    per client. Built at Adsum; it has run thousands of checks.
-
-- name: OpenTax
-  summary: >-
-    A SaaS platform that pulls UK tax data from HMRC, Xero and QuickBooks so accountants can
-    track what every client owes. 830+ practices have onboarded, and it was nominated for two
-    Digital Disruptor awards in 2025. Built at Adsum.
-
-- name: Landscape Assessments
-  summary: >-
-    Multi-brand studies in which global brands jointly fund a survey of a shared sourcing region
-    or sector, then benchmark their own suppliers' human-rights risk against the results.
-    Delivered across cocoa, sugar, logistics and agriculture on five continents. Built at &Wider.
-
-- name: Engage
-  summary: >-
-    A progressive web app that lets global brands monitor human-rights impacts and working
-    conditions across their supply chains. I designed its database, user journey, supplier risk
-    scoring and the anonymity rules that protect workers. Built at &Wider.
+    My Claude Code skills, including one that coaches you through a ticket like a systems
+    design interview before you write any code: one question at a time, hints when you're
+    stuck, and a log of your gaps to revisit on future tickets.
+  repo: https://github.com/kaylynvanas/skills
