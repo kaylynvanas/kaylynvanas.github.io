@@ -1,13 +1,31 @@
 # Copy a block to add a project. url, repo and image are optional; leave one out to hide it.
 # image: put a screenshot in images/ and point at it, e.g. /images/actually.png
 - name: actually.
-  summary: A macro tracker you talk to. Say what you ate and it logs the meal, reporting only the nutrients you follow.
+  summary: >-
+    A nutrition tracker you talk to instead of filling in forms. Tell it what you ate and it
+    looks each food up in a South African food database, asks only the questions that change
+    the numbers, and reports just the nutrients you follow. It reports numbers and never gives
+    dietary advice.
   tech: [Python, FastAPI, PostgreSQL, Claude API]
 
+- name: OpenTax AI Agents
+  summary: >-
+    A multi-agent system on the Claude Agent SDK that runs month-end bookkeeping reviews on
+    live client ledgers: payroll, marketplace payouts, VAT and asset checks, with a PDF report
+    per client. Built at Adsum; it has run thousands of checks.
+  tech: [Claude Agent SDK, Python, Xero API]
+
 - name: pipeline-debugger
-  summary: One sentence on what it does.
+  summary: >-
+    When an Airflow task fails, a LangGraph agent investigates: it reads the logs, queries
+    Postgres and reads the DAG source, then writes a diagnosis with the root cause and a
+    suggested fix to a React dashboard.
+  tech: [LangGraph, Airflow, FastAPI, React]
   repo: https://github.com/kaylynvanas/pipeline-debugger
 
 - name: skills
-  summary: One sentence on what it does.
+  summary: >-
+    My Claude Code skills, including one that coaches you through a ticket like a systems
+    design interview before you write any code.
+  tech: [Claude Code]
   repo: https://github.com/kaylynvanas/skills

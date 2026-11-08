@@ -1,0 +1,16 @@
+# Newest first within each list.
+degrees:
+  - name: BSc Informatics
+    school: University of South Africa
+    years: 2017 – 2020
+
+certifications:
+  - name: "Microsoft Certified: Azure Data Fundamentals"
+    issuer: Microsoft
+    year: 2024
+  - name: "Microsoft Certified: Azure Fundamentals"
+    issuer: Microsoft
+    year: 2022
+  - name: Data Science Bootcamp
+    issuer: HyperionDev
+    year: 2019

@@ -9,25 +9,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cherry+Swash:wght@700&family=Archivo:wdth,wght@125,700&family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cherry+Swash:wght@700&family=Archivo:wdth,wght@100..125,700&family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link href="./style.css" rel="stylesheet">
 </head>
 <body>
   <header>
-    <h1>{{ site.name }}</h1>
+    <h1 class="name">{{ site.name }}</h1>
     <nav>
       <a href="#about">About</a>
       <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
       {% if site.substack != "" %}<a href="#writing">Writing</a>{% endif %}
       <a href="#contact">Contact</a>
     </nav>
   </header>
   <main>
     <section class="hero" id="about">
-      <span class="side side-left" aria-hidden="true">Cape Town · South Africa</span>
-      <span class="side side-right" aria-hidden="true">Selected work · Writing</span>
-      <h2 class="name">{{ site.name }}</h2>
       <div class="hero-row">
         <img src="./images/profile.jpg" alt="Kaylyn Van As" class="profile">
         <div class="hero-text">
@@ -51,6 +49,7 @@
             {% for item in job.highlights %}<li>{{ item }}</li>{% endfor %}
           </ul>
           {% endif %}
+          {% if job.tech %}<p class="meta">{{ job.tech | join: " · " }}</p>{% endif %}
         </div>
       </article>
       {% endfor %}
@@ -74,6 +73,22 @@
         </article>
         {% endfor %}
       </div>
+    </section>
+
+    <section class="section" id="education">
+      <h2 class="heading">Education</h2>
+      {% for d in site.data.education.degrees %}
+      <article class="job">
+        <p class="meta">{{ d.years }}</p>
+        <div><h3>{{ d.name }}</h3><p>{{ d.school }}</p></div>
+      </article>
+      {% endfor %}
+      {% for c in site.data.education.certifications %}
+      <article class="job">
+        <p class="meta">{{ c.year }}</p>
+        <div><h3>{{ c.name }}</h3><p>{{ c.issuer }}</p></div>
+      </article>
+      {% endfor %}
     </section>
 
     {% if site.substack != "" %}
@@ -104,8 +119,5 @@
       </dl>
     </section>
   </main>
-  <footer>
-    <p>i made this.</p>
-  </footer>
 </body>
 </html>

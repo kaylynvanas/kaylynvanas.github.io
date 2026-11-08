@@ -1,9 +1,37 @@
 # Newest first. Copy a block to add a role. "end" can be "Present".
-- role: Your job title
-  company: Company name
-  start: "2024"
+- role: Software Engineer
+  company: Adsum
+  start: Apr 2025
   end: Present
-  summary: One sentence on what the role was.
+  summary: >-
+    I build OpenTax, a UK fintech SaaS that pulls tax data from HMRC, Xero and QuickBooks
+    so accountants can track what every client owes. 830+ practices have onboarded, and it
+    was nominated for two Digital Disruptor awards in 2025. I joined as a backend engineer
+    and now own features end to end across the stack.
   highlights:
-    - Something you did, with a number if you have one.
-    - Another thing you did.
+    - Built customer-facing AI agents across two generations of OpenTax's AI products, both in production with real accounting firms.
+    - Raised VAT check accuracy from under 50% to over 90% with golden datasets and accuracy and consistency benchmarks.
+    - Main production-support engineer, owning incidents from customer report to post-mortem; hundreds of cases led.
+    - Found and fixed £1.8m of missing year-end payroll tax adjustments across 798 clients.
+    - Restored ~104,000 lost Corporation Tax filing periods for ~9,800 clients across 150+ practices.
+    - Built a pipeline health bot that triages nightly Airflow failures every morning and drafts fix PRs.
+    - Shipped a public REST API, role-based access control, MFA for automated HMRC logins, and historical balance reconstruction.
+    - Co-owner of the OpenTax product backlog since October 2026.
+  tech: [Python, FastAPI, TypeScript, React, PostgreSQL, Airflow, Claude Agent SDK, LangGraph, AWS, Terraform]
+
+- role: Data Analyst
+  company: "&Wider"
+  start: Oct 2020
+  end: Apr 2025
+  summary: >-
+    An early technical hire at a Dutch social-impact startup. I helped build its two
+    products from scratch: Engage, a web app that lets global brands monitor human-rights
+    impacts across their supply chains, and Landscape Assessments, multi-brand studies
+    that benchmark human-rights risk across a sourcing region.
+  highlights:
+    - Owned the data behind every client report and dashboard, and designed the database behind Engage.
+    - Built and maintained ETL pipelines in Python and SQL over 1 million+ worker-survey data points from 70+ countries.
+    - Delivered Landscape Assessments covering cocoa, sugar, logistics and agriculture across five continents.
+    - Designed the anonymity rules that protect workers, such as filters that switch off when a group is small enough to identify someone.
+    - Designed the Engage user journey and the supplier risk-scoring system.
+  tech: [Python, pandas, SQL Server, Power BI, Azure]
