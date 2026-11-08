@@ -626,9 +626,15 @@ footer {
 }
 
 .dialog-body {
+    position: relative;
     display: grid;
     gap: 1rem;
     padding: 1.5rem;
+}
+
+/* Keeps the title clear of the close button. */
+.dialog-body h2 {
+    padding-right: 2.5rem;
 }
 
 .dialog-body h2 {
@@ -647,21 +653,31 @@ footer {
     padding-top: .5rem;
 }
 
-.link-button {
-    background: none;
-    border: 0;
+/* Close × in the dialog's top-right corner, framed like the contact icons. */
+.dialog-close {
+    position: absolute;
+    top: .9rem;
+    right: .9rem;
+    display: grid;
+    place-items: center;
+    width: 1.9rem;
+    height: 1.9rem;
     padding: 0;
+    background: var(--cloud);
     color: var(--ink);
-    font: 600 .95rem var(--body);
-    text-decoration: underline;
-    text-decoration-color: var(--red);
-    text-decoration-thickness: 2px;
-    text-underline-offset: 3px;
+    border: 2px solid var(--ink);
+    box-shadow: 2px 2px 0 var(--ink);
+    font-size: .85rem;
     cursor: pointer;
 }
 
-.link-button:hover {
+.dialog-close:hover {
     color: var(--red);
+}
+
+.dialog-close:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
 }
 
 @media only screen and (max-width: 785px) {

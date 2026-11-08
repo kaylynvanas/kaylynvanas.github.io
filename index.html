@@ -141,11 +141,11 @@
   {% if site.resume != "" %}
   <dialog id="resume-dialog" aria-labelledby="resume-dialog-title">
     <div class="dialog-body">
+      <button type="button" class="dialog-close" id="resume-close" aria-label="Close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
       <h2 id="resume-dialog-title">Before you download</h2>
       <p>{{ site.resume_notice }}</p>
       <div class="dialog-actions">
         <a class="button" id="resume-agree" target="_blank" rel="noopener" href="{{ site.resume }}">I agree, download</a>
-        <button type="button" class="link-button" id="resume-cancel">Cancel</button>
       </div>
     </div>
   </dialog>
@@ -157,7 +157,7 @@
       dialog.showModal();
     });
     document.getElementById('resume-agree').addEventListener('click', () => dialog.close());
-    document.getElementById('resume-cancel').addEventListener('click', () => dialog.close());
+    document.getElementById('resume-close').addEventListener('click', () => dialog.close());
     // Clicking the dimmed backdrop (outside the box) also closes it.
     dialog.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
   </script>
