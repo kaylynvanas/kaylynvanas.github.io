@@ -1,7 +1,7 @@
 """Save the latest Substack posts to _data/substack.json for the Writing section.
 
-Reads the Substack address from _config.yml. Run by .github/workflows/substack.yml;
-standard library only so the workflow needs no installs.
+Reads the Substack address from _config.yml. Run it by hand after publishing a post,
+then commit _data/substack.json. Standard library only.
 
 usage: python scripts/fetch_substack.py [feed_url] [out_path]
 """
