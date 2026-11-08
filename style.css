@@ -28,7 +28,7 @@ body {
     color: var(--ink);
     font-family: var(--body);
     font-weight: 300;
-    font-size: 1.05rem;
+    font-size: 1rem;
     line-height: 1.55;
 }
 
@@ -180,7 +180,7 @@ main {
 }
 
 .heading {
-    font-size: 3.5rem;
+    font-size: 2.6rem;
     padding-bottom: 1.5rem;
 }
 
@@ -232,7 +232,6 @@ main {
 }
 
 .about {
-    font-size: 1rem;
     max-width: 30rem;
 }
 
@@ -246,14 +245,20 @@ main {
     max-width: 56rem;
 }
 
+/* Same soft italic as the "Hello." line, so titles echo the intro. */
 h3 {
+    font-family: var(--soft);
+    font-style: italic;
+    font-weight: 300;
+    font-variation-settings: 'SOFT' 100;
     font-size: 1.3rem;
-    font-weight: 600;
     line-height: 1.25;
 }
 
 ul {
-    padding-left: 1.25rem;
+    display: grid;
+    gap: .3rem;
+    padding-left: 1.1rem;
 }
 
 .meta {
@@ -268,8 +273,13 @@ ul {
     border-top: 2px solid var(--ink);
 }
 
+.job > div {
+    display: grid;
+    gap: .6rem;
+}
+
 .job .meta {
-    padding-top: .45rem;
+    padding-top: .3rem;
 }
 
 /* Project cards pick up the same hard ink shadow as the headings. */
@@ -277,6 +287,11 @@ ul {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.75rem;
+}
+
+/* An odd last card spans both columns instead of sitting alone in half a row. */
+.card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
 }
 
 .card {
@@ -301,14 +316,6 @@ ul {
     gap: .5rem;
     padding: 1.25rem;
     flex: 1;
-}
-
-.card h3 {
-    font-family: var(--display);
-    font-size: 1.7rem;
-    color: var(--red);
-    -webkit-text-stroke: 1px var(--ink);
-    text-shadow: 2px 2px 0 var(--ink);
 }
 
 .card .links {
@@ -415,6 +422,6 @@ footer {
         gap: 0;
     }
     .heading {
-        font-size: 2.5rem;
+        font-size: 2.1rem;
     }
 }
