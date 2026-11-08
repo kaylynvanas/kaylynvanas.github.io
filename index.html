@@ -31,7 +31,7 @@
           <p class="tagline">Hello.</p>
           {% for paragraph in site.about %}<p class="about">{{ paragraph }}</p>{% endfor %}
           <div class="actions">
-            {% if site.resume != "" %}<a target="_blank" rel="noopener" class="button" href="{{ site.resume }}">Download resume (PDF)</a>{% endif %}
+            {% if site.resume != "" %}<a target="_blank" rel="noopener" class="button" id="resume-link" href="{{ site.resume }}">Download resume (PDF)</a>{% endif %}
             <p class="socials">
               <a href="mailto:{{ site.email }}" aria-label="Email {{ site.email }}" title="{{ site.email }}"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a>
               {% if site.linkedin != "" %}<a target="_blank" rel="noopener" href="{{ site.linkedin }}" aria-label="LinkedIn" title="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>{% endif %}
@@ -129,6 +129,32 @@
   </main>
   <footer>
     <a class="button" href="#about">Back to top ↑</a>
+    <p class="footer-note">{{ site.footer_note }}</p>
   </footer>
+
+  {% if site.resume != "" %}
+  <dialog id="resume-dialog" aria-labelledby="resume-dialog-title">
+    <div class="dialog-body">
+      <h2 id="resume-dialog-title">Before you download</h2>
+      <p>{{ site.resume_notice }}</p>
+      <div class="dialog-actions">
+        <a class="button" id="resume-agree" target="_blank" rel="noopener" href="{{ site.resume }}">I agree, download</a>
+        <button type="button" class="link-button" id="resume-cancel">Cancel</button>
+      </div>
+    </div>
+  </dialog>
+  <script>
+    // The button stays a plain link if scripts are off; with scripts it asks first.
+    const dialog = document.getElementById('resume-dialog');
+    document.getElementById('resume-link').addEventListener('click', (event) => {
+      event.preventDefault();
+      dialog.showModal();
+    });
+    document.getElementById('resume-agree').addEventListener('click', () => dialog.close());
+    document.getElementById('resume-cancel').addEventListener('click', () => dialog.close());
+    // Clicking the dimmed backdrop (outside the box) also closes it.
+    dialog.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
+  </script>
+  {% endif %}
 </body>
 </html>

@@ -459,8 +459,70 @@ h3 a {
 
 footer {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
     padding: 4rem 2rem 3rem;
+    text-align: center;
+}
+
+.footer-note {
+    max-width: 30rem;
+    font-size: .75rem;
+}
+
+/* POPIA confirm step before the resume downloads; same border and hard shadow as the buttons. */
+#resume-dialog {
+    width: min(32rem, calc(100% - 2rem));
+    padding: 0;
+    margin: auto;
+    background: var(--cloud);
+    color: var(--ink);
+    border: 2px solid var(--ink);
+    box-shadow: 8px 8px 0 var(--ink);
+}
+
+#resume-dialog::backdrop {
+    background: rgba(28, 23, 23, .45);
+}
+
+.dialog-body {
+    display: grid;
+    gap: 1rem;
+    padding: 1.5rem;
+}
+
+.dialog-body h2 {
+    font-family: var(--soft);
+    font-style: italic;
+    font-weight: 300;
+    font-variation-settings: 'SOFT' 100;
+    font-size: 1.4rem;
+}
+
+.dialog-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem 1.5rem;
+    padding-top: .5rem;
+}
+
+.link-button {
+    background: none;
+    border: 0;
+    padding: 0;
+    color: var(--ink);
+    font: 600 .95rem var(--body);
+    text-decoration: underline;
+    text-decoration-color: var(--red);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+    cursor: pointer;
+}
+
+.link-button:hover {
+    color: var(--red);
 }
 
 @media only screen and (max-width: 785px) {
