@@ -51,10 +51,17 @@
           <p class="when">{{ job.start }} – {{ job.end }}</p>
           <h3>{{ job.role }}, {{ job.company }}</h3>
           {% if job.summary %}<p>{{ job.summary }}</p>{% endif %}
-          {% if job.highlights %}
-          <ul>
-            {% for item in job.highlights %}<li>{{ item }}</li>{% endfor %}
-          </ul>
+          {% if job.groups %}
+          <div class="groups">
+            {% for group in job.groups %}
+            <div class="group">
+              <h4>{{ group.title }}</h4>
+              <ul>
+                {% for item in group.items %}<li>{{ item }}</li>{% endfor %}
+              </ul>
+            </div>
+            {% endfor %}
+          </div>
           {% endif %}
           {% if job.tech %}<p class="meta">{{ job.tech | join: " · " }}</p>{% endif %}
         </article>

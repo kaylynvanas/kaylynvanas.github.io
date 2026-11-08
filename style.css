@@ -308,7 +308,46 @@ ul {
     position: relative;
     display: grid;
     gap: .6rem;
+}
+
+/* Cards use the full width; running text keeps a readable line length. */
+.rail article > p {
     max-width: 40rem;
+}
+
+/* Each role's detail as small themed cards, all visible. */
+.groups {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: .4rem;
+}
+
+.group {
+    display: grid;
+    gap: .5rem;
+    align-content: start;
+    padding: 1rem 1.1rem;
+    background: rgba(242, 205, 184, .55);
+    border: 2px solid var(--ink);
+}
+
+/* An odd last card spans the row instead of sitting alone in half of it. */
+.group:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+}
+
+.group h4 {
+    font-family: var(--label);
+    font-weight: 700;
+    font-size: .62rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--red);
+}
+
+.group ul {
+    font-size: .9rem;
 }
 
 .rail .rail-node {
@@ -641,7 +680,7 @@ footer {
     .hero {
         padding: 1rem 0 2rem;
     }
-    .job, .cards, .posts {
+    .job, .cards, .posts, .groups {
         grid-template-columns: 1fr;
     }
     .job {
