@@ -1,6 +1,8 @@
 # Newest first. Copy a block to add a role. "end" can be "Present".
+# logo is optional: a square image in images/.
 - role: Software Engineer
   company: Adsum
+  logo: /images/adsum.jpeg
   start: Apr 2025
   end: Present
   summary: >-
@@ -21,6 +23,7 @@
 
 - role: Data Analyst
   company: "&Wider"
+  logo: /images/andwider.jpeg
   start: Oct 2020
   end: Apr 2025
   summary: >-
