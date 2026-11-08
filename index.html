@@ -1,128 +1,108 @@
+---
+---
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Kaylyn Van As</title>
+  <meta charset="utf-8">
+  <title>{{ site.name }}</title>
+  <meta name="description" content="{{ site.tagline }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href='./style.css' rel='stylesheet'>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cherry+Swash:wght@700&family=Archivo:wdth,wght@125,700&family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="./style.css" rel="stylesheet">
 </head>
 <body>
   <header>
-    <h1>Kaylyn Van As</h1>
+    <h1>{{ site.name }}</h1>
     <nav>
-      <a href="#home">Home</a>
       <a href="#about">About</a>
+      <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
+      {% if site.substack != "" %}<a href="#writing">Writing</a>{% endif %}
       <a href="#contact">Contact</a>
     </nav>
   </header>
   <main>
-    <div class="home-section" id="home">
-      <div class="home-image">
-        <img src="./images/profile.jpg" alt="profile photo" class="profile">
-      </div>
-      <div class="home-text">
-        <h2>Hello! My name is</h2>
-        <br>
-        <h2 class="name">Kaylyn Van As</h2>
-        <br>
-        <h2>I am an analyst and full stack engineering student based in Cape Town, South Africa.</h2>
-      </div>
-    </div>
-    <div class="about-section" id="about">
-      <h2 class="heading">About</h2>
-      <div class="about-text">
-        <p>I am a full stack development bootcamp student and data analyst based in Cape Town, South Africa. I am a lifelong learner whose aim is to create 
-          beautiful, impactful and accessible software.</p>
-        <br>
-        <!-- <p>I have a range of skills within the realms of full stack engineering and data science. View my full <a href="#" target="_blank">resume</a> or 
-          <a href="https://www.linkedin.com/in/kaylyn-van-as-a99678129/" target="_blank">LinkedIn</a>.</p> -->
-        <p>I have a range of skills within the realms of full stack engineering and data science. View my <a href="https://www.linkedin.com/in/kaylyn-van-as-a99678129/" target="_blank">LinkedIn</a>.</p>
-      </div>
-      <div class="about-skills">
-        <div class="web-dev">
-          <figure>
-            <img src="./images/icons8-html-5-48.png" alt="HTML icon by Icons8">
-            <figcaption>HTML</figcaption>
-          </figure>
-          <figure>
-            <img src="./images/icons8-css3-48.png" alt="CSS icon by Icons8">
-            <figcaption>CSS</figcaption>
-          </figure>
-          <figure>
-            <img src="./images/icons8-javascript-48.png" alt="JavaScript icon by Icons8">
-            <figcaption>JavaScript</figcaption>
-          </figure>
-        </div>
-        <div class="data-science">
-          <figure>
-            <img src="./images/icons8-python-48.png" alt="Python icon by Icons8">
-            <figcaption>Python</figcaption>
-          </figure>
-          <figure>
-            <img src="./images/pandas_mark_white.svg" alt="Pandas">
-            <figcaption>Pandas</figcaption>
-          </figure>
-          <figure>
-            <img src="./images/icons8-numpy-48.png" alt="NumPy icon by Icons8">
-            <figcaption>NumPy</figcaption>
-          </figure>
-        </div>
-        <div class="general">
-          <figure>
-            <img src="./images/icons8-microsoft-sql-server-48.png" alt="SQL icon by Icons8">
-            <figcaption>SQL</figcaption>
-          </figure>
-          <figure>
-            <img src="./images/icons8-git-48.png" alt="Git icon by Icons8">
-            <figcaption>Git</figcaption>
-          </figure>
-          <figure>
-            <img src="./images/icons8-azure-48.png" alt="Microsoft Azure icon by Icons8">
-            <figcaption>Microsoft Azure</figcaption>
-          </figure>
+    <section class="hero" id="about">
+      <span class="side side-left" aria-hidden="true">Cape Town · South Africa</span>
+      <span class="side side-right" aria-hidden="true">Selected work · Writing</span>
+      <h2 class="name">{{ site.name }}</h2>
+      <div class="hero-row">
+        <img src="./images/profile.jpg" alt="Kaylyn Van As" class="profile">
+        <div class="hero-text">
+          <p class="tagline">{{ site.tagline }}</p>
+          <p>{{ site.about }}</p>
+          {% if site.resume != "" %}<a class="button" href="{{ site.resume }}">Download resume (PDF)</a>{% endif %}
         </div>
       </div>
-    </div>
-    <div class="projects-section" id="projects">
+    </section>
+
+    <section class="section" id="experience">
+      <h2 class="heading">Experience</h2>
+      {% for job in site.data.experience %}
+      <article class="job">
+        <p class="meta">{{ job.start }} – {{ job.end }}</p>
+        <div>
+          <h3>{{ job.role }}, {{ job.company }}</h3>
+          {% if job.summary %}<p>{{ job.summary }}</p>{% endif %}
+          {% if job.highlights %}
+          <ul>
+            {% for item in job.highlights %}<li>{{ item }}</li>{% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+      </article>
+      {% endfor %}
+    </section>
+
+    <section class="section wide" id="projects">
       <h2 class="heading">Projects</h2>
-      <div class="projects">
-        <div class="project1">
-          <img src="./images/project1.png" alt="Portfolio Site">
-          <div class="project1-caption">
-            <figcaption>Portfolio Site</figcaption>
+      <div class="cards">
+        {% for project in site.data.projects %}
+        <article class="card">
+          {% if project.image %}<img src="{{ project.image }}" alt="{{ project.name }} screenshot">{% endif %}
+          <div class="card-body">
+            <h3>{{ project.name }}</h3>
+            <p>{{ project.summary }}</p>
+            {% if project.tech %}<p class="meta">{{ project.tech | join: " · " }}</p>{% endif %}
+            <p class="links">
+              {% if project.url %}<a href="{{ project.url }}">Live</a>{% endif %}
+              {% if project.repo %}<a href="{{ project.repo }}">Code</a>{% endif %}
+            </p>
           </div>
-        </div>
-        <div class="project2">
-          <img src="./images/project1.png" alt="Portfolio Site">
-          <div class="project2-caption">
-            <figcaption>Portfolio Site</figcaption>
-          </div>
-        </div>
-        <div class="project3">
-          <img src="./images/project1.png" alt="Portfolio Site">
-          <div class="project3-caption">
-            <figcaption>Portfolio Site</figcaption>
-          </div>
-        </div>
-      </div>>
-    </div>
-    <div class="contact-section" id="contact">
-      <h2 class="heading">Contact</h2>
-      <div class="contact-details">
-        <div class="email">
-          <h3 class="heading-content">Email</h3>
-          <h3><a href="mailto:kaylynvanas@gmail.com" target="_blank">kaylynvanas@gmail.com</a></h3>
-        </div>
-        <div class="linkedin">
-          <h3 class="heading-content">LinkedIn</h3>
-          <h3><a href="https://www.linkedin.com/in/kaylyn-van-as-a99678129/" target="_blank">https://www.linkedin.com/in/kaylyn-van-as-a99678129/</a></h3>
-        </div>
-        <div class="github">
-          <h3 class="heading-content">GitHub</h3>
-          <h3><a href="https://github.com/kaylynvanas" target="_blank">https://github.com/kaylynvanas</a></h3>
-        </div>
+        </article>
+        {% endfor %}
       </div>
-    </div>
+    </section>
+
+    {% if site.substack != "" %}
+    <section class="section" id="writing">
+      <h2 class="heading">Writing</h2>
+      <p>I write on Substack. <a href="{{ site.substack }}">Read the latest posts</a>.</p>
+      <iframe src="{{ site.substack }}/embed" title="Subscribe to my Substack" class="substack" loading="lazy"></iframe>
+    </section>
+    {% endif %}
+
+    {% if site.x_handle != "" %}
+    <section class="section" id="x">
+      <h2 class="heading">On X</h2>
+      <!-- X's widget replaces this link with the feed; if it fails to load, the link stays. -->
+      <a class="twitter-timeline" data-theme="light" data-height="600" href="https://x.com/{{ site.x_handle }}">Posts by @{{ site.x_handle }}</a>
+      <script async src="https://platform.twitter.com/widgets.js"></script>
+    </section>
+    {% endif %}
+
+    <section class="section" id="contact">
+      <h2 class="heading">Contact</h2>
+      <dl class="contact-details">
+        <dt>Email</dt><dd><a href="mailto:{{ site.email }}">{{ site.email }}</a></dd>
+        {% if site.linkedin != "" %}<dt>LinkedIn</dt><dd><a href="{{ site.linkedin }}">LinkedIn profile</a></dd>{% endif %}
+        <dt>GitHub</dt><dd><a href="https://github.com/{{ site.github }}">github.com/{{ site.github }}</a></dd>
+        {% if site.x_handle != "" %}<dt>X</dt><dd><a href="https://x.com/{{ site.x_handle }}">@{{ site.x_handle }}</a></dd>{% endif %}
+        {% if site.substack != "" %}<dt>Substack</dt><dd><a href="{{ site.substack }}">{{ site.substack | remove: "https://" }}</a></dd>{% endif %}
+      </dl>
+    </section>
   </main>
   <footer>
     <p>i made this.</p>

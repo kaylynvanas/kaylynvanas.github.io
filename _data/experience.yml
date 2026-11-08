@@ -1,0 +1,9 @@
+# Newest first. Copy a block to add a role. "end" can be "Present".
+- role: Your job title
+  company: Company name
+  start: "2024"
+  end: Present
+  summary: One sentence on what the role was.
+  highlights:
+    - Something you did, with a number if you have one.
+    - Another thing you did.

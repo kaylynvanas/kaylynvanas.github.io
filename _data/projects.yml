@@ -1,0 +1,13 @@
+# Copy a block to add a project. url, repo and image are optional; leave one out to hide it.
+# image: put a screenshot in images/ and point at it, e.g. /images/actually.png
+- name: actually.
+  summary: A macro tracker you talk to. Say what you ate and it logs the meal, reporting only the nutrients you follow.
+  tech: [Python, FastAPI, PostgreSQL, Claude API]
+
+- name: pipeline-debugger
+  summary: One sentence on what it does.
+  repo: https://github.com/kaylynvanas/pipeline-debugger
+
+- name: skills
+  summary: One sentence on what it does.
+  repo: https://github.com/kaylynvanas/skills
