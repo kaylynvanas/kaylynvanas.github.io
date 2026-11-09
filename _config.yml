@@ -37,5 +37,4 @@ substack_avatar: "https://substackcdn.com/image/fetch/w_96,h_96,c_fill,f_auto,q_
 x_handle: "kaylynvanas"
 
 exclude:
-  - README.txt
   - scripts
