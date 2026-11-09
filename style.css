@@ -455,6 +455,20 @@ ul {
     opacity: .55;
 }
 
+/* Logos tip slightly on hover, like a card knocked on a pinboard: a timeline logo when its entry is hovered, a tech logo when its name is. */
+@media (prefers-reduced-motion: no-preference) {
+    .logo,
+    .stack img {
+        transition: transform .25s cubic-bezier(.34, 1.56, .64, 1);
+    }
+    .rail article:hover .logo {
+        transform: rotate(-6deg);
+    }
+    .stack li:hover img {
+        transform: rotate(-12deg) scale(1.15);
+    }
+}
+
 /* Project cards pick up the same hard ink shadow as the headings. */
 .cards {
     display: grid;
