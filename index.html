@@ -90,13 +90,8 @@
         <article class="card">
           {% if project.image %}<img src="{{ project.image }}" alt="{{ project.name }} screenshot">{% endif %}
           <div class="card-body">
-            <h3>{{ project.name }}</h3>
+            <h3>{{ project.name }}{% if project.url %} <a class="title-link" target="_blank" rel="noopener" href="{{ project.url }}" aria-label="Visit {{ project.name }}" title="{{ project.url | remove: "https://" | remove: "http://" | remove: "www." | split: "/" | first }}"><i class="fa-solid fa-link" aria-hidden="true"></i></a>{% endif %}{% if project.repo %} <a class="title-link" target="_blank" rel="noopener" href="{{ project.repo }}" aria-label="{{ project.name }} on GitHub" title="View on GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>{% endif %}</h3>
             <p>{{ project.summary }}</p>
-            
-            <p class="links">
-              {% if project.url %}<a target="_blank" rel="noopener" href="{{ project.url }}">{{ project.url | remove: "https://" | remove: "http://" }} ↗</a>{% endif %}
-              {% if project.repo %}<a target="_blank" rel="noopener" href="{{ project.repo }}">GitHub ↗</a>{% endif %}
-            </p>
           </div>
         </article>
         {% endfor %}
@@ -110,9 +105,8 @@
         <article>
           {% if item.logo %}<span class="logo rail-node"><img src="{{ item.logo }}" alt="{{ item.org }} logo" width="48" height="48"></span>{% else %}<span class="rail-node rail-dot" aria-hidden="true"></span>{% endif %}
           <p class="when">{{ item.when }}</p>
-          <h3>{{ item.name }}</h3>
+          <h3>{{ item.name }}{% if item.credential %} <a class="title-link" target="_blank" rel="noopener" href="{{ item.credential }}" aria-label="Verify the {{ item.name }} credential" title="Verify credential"><i class="fa-solid fa-link" aria-hidden="true"></i></a>{% endif %}</h3>
           <p>{{ item.org }}</p>
-          {% if item.credential %}<p class="links"><a target="_blank" rel="noopener" href="{{ item.credential }}">Verify credential ↗</a></p>{% endif %}
         </article>
         {% endfor %}
       </div>

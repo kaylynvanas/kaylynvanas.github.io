@@ -484,10 +484,6 @@ ul {
     flex: 1;
 }
 
-.card .links {
-    margin-top: auto;
-}
-
 a {
     color: var(--ink);
     font-weight: 600;
@@ -503,11 +499,6 @@ a:hover {
 a:focus-visible {
     outline: 2px solid var(--ink);
     outline-offset: 2px;
-}
-
-.links {
-    display: flex;
-    gap: 1rem;
 }
 
 /* Original colours in an ink frame with a hard shadow, lighter grain than the page over the top. */
