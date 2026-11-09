@@ -24,6 +24,13 @@ html {
     scroll-padding-top: var(--header-h);
 }
 
+/* Glide to a section from the nav, unless the visitor has asked for less motion. */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
 body {
     min-height: 100vh;
     background: var(--sky);
