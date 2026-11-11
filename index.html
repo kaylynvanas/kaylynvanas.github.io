@@ -19,8 +19,15 @@
   <header>
     <h1 class="name"><a href="#about">{{ site.name }}</a></h1>
     <nav>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
+      <!-- On hover (or keyboard focus) Experience and Projects drop down a list that jumps to each entry. -->
+      <div class="nav-item">
+        <a href="#experience">Experience</a>
+        <ul class="dropdown">{% for job in site.data.experience %}<li><a href="#job-{{ forloop.index }}">{{ job.company }}</a></li>{% endfor %}</ul>
+      </div>
+      <div class="nav-item">
+        <a href="#projects">Projects</a>
+        <ul class="dropdown">{% for project in site.data.projects %}<li><a href="#project-{{ forloop.index }}">{{ project.title }}</a></li>{% endfor %}</ul>
+      </div>
       <a href="#education">Education</a>
       {% if site.substack != "" %}<a href="#writing">Writing</a>{% endif %}
     </nav>
@@ -48,7 +55,7 @@
       <h2 class="heading">Experience</h2>
       <div class="rail">
         {% for job in site.data.experience %}
-        <article>
+        <article id="job-{{ forloop.index }}">
           {% if job.logo %}<span class="logo rail-node"><img src="{{ job.logo }}" alt="{{ job.company }} logo" width="48" height="48"></span>{% else %}<span class="rail-node rail-dot" aria-hidden="true"></span>{% endif %}
           <p class="when">{{ job.start }} – {{ job.end }}</p>
           <h3>{{ job.role }}, {{ job.company }}{% if job.url %} <a class="title-link" target="_blank" rel="noopener" href="{{ job.url }}" aria-label="Visit {{ job.company }}'s site" title="{{ job.url | remove: "https://" | remove: "http://" | remove: "www." | split: "/" | first }}"><i class="fa-solid fa-link" aria-hidden="true"></i></a>{% endif %}</h3>
@@ -89,10 +96,10 @@
       <h2 class="heading">Projects</h2>
       <div class="features">
         {% for project in site.data.projects %}
-        <article class="feature{% unless project.video or project.image %} no-media{% endunless %}">
+        <article class="feature{% unless project.video or project.image %} no-media{% endunless %}" id="project-{{ forloop.index }}">
           {% if project.video %}
           <!-- Plays silently on a loop like a GIF; the poster shows until it loads. -->
-          <div class="media"><video src="{{ project.video }}" poster="{{ project.poster }}" autoplay muted loop playsinline aria-label="{{ project.media_alt }}"></video></div>
+          <div class="media media-video"><video src="{{ project.video }}" poster="{{ project.poster }}" autoplay muted loop playsinline aria-label="{{ project.media_alt }}"></video></div>
           {% elsif project.image %}
           <div class="media"><img src="{{ project.image }}" alt="{{ project.media_alt }}" loading="lazy"></div>
           {% endif %}

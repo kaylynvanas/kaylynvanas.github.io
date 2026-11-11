@@ -16,6 +16,8 @@
 - name: actually.
   title: Nutrition tracking MCP server
   mark: a
+  image: /images/actually.webp
+  media_alt: The askactually.co.za landing page, with a chat where Claude logs a breakfast through actually.
   summary:
     - >-
       actually. turns the AI assistant you already use into a nutrition tracker. Connect it to
