@@ -10,6 +10,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cherry+Swash:wght@700&family=Archivo:wdth,wght@100..125,700&family=Fraunces:ital,opsz,wght,SOFT@1,9..144,300,100&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,600;1,6..72,300&display=swap" rel="stylesheet">
+  <!-- Only the letter "a" in Geist Black, for the actually. brand mark. -->
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@900&text=a&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
   <link href="./style.css" rel="stylesheet">
 </head>
@@ -85,13 +87,23 @@
 
     <section class="section" id="projects">
       <h2 class="heading">Projects</h2>
-      <div class="cards">
+      <div class="features">
         {% for project in site.data.projects %}
-        <article class="card">
-          {% if project.image %}<img src="{{ project.image }}" alt="{{ project.name }} screenshot">{% endif %}
-          <div class="card-body">
-            <h3>{{ project.name }}{% if project.url %} <a class="title-link" target="_blank" rel="noopener" href="{{ project.url }}" aria-label="Visit {{ project.name }}" title="{{ project.url | remove: "https://" | remove: "http://" | remove: "www." | split: "/" | first }}"><i class="fa-solid fa-link" aria-hidden="true"></i></a>{% endif %}{% if project.repo %} <a class="title-link" target="_blank" rel="noopener" href="{{ project.repo }}" aria-label="{{ project.name }} on GitHub" title="View on GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>{% endif %}</h3>
-            <p>{{ project.summary }}</p>
+        <article class="feature{% unless project.video or project.image %} no-media{% endunless %}">
+          {% if project.video %}
+          <!-- Plays silently on a loop like a GIF; the poster shows until it loads. -->
+          <div class="media"><video src="{{ project.video }}" poster="{{ project.poster }}" autoplay muted loop playsinline aria-label="{{ project.media_alt }}"></video></div>
+          {% elsif project.image %}
+          <div class="media"><img src="{{ project.image }}" alt="{{ project.media_alt }}" loading="lazy"></div>
+          {% endif %}
+          <div class="feature-text">
+            <p class="byline">{% if project.mark %}<span class="badge brand" aria-hidden="true"><span>{{ project.mark }}</span></span>{% elsif project.icon %}<span class="badge" aria-hidden="true"><i class="{{ project.icon }}"></i></span>{% endif %}{{ project.name }}</p>
+            <h3>{{ project.title }}</h3>
+            {% if project.summary.first %}{% for para in project.summary %}<p>{{ para }}</p>{% endfor %}{% else %}<p>{{ project.summary }}</p>{% endif %}
+            <p class="feature-links">
+              {% if project.url %}<a target="_blank" rel="noopener" href="{{ project.url }}"><i class="fa-solid fa-link" aria-hidden="true"></i>{{ project.url | remove: "https://" | remove: "http://" | remove: "www." | split: "/" | first }}</a>{% endif %}
+              {% if project.repo %}<a target="_blank" rel="noopener" href="{{ project.repo }}"><i class="fa-brands fa-github" aria-hidden="true"></i>View on GitHub</a>{% endif %}
+            </p>
           </div>
         </article>
         {% endfor %}

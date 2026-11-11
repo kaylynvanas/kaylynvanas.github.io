@@ -455,13 +455,16 @@ ul {
     opacity: .55;
 }
 
-/* Logos tip slightly on hover, like a card knocked on a pinboard: a timeline logo when its entry is hovered, a tech logo when its name is. */
+/* Logos tip slightly on hover, like a card knocked on a pinboard: a timeline logo when its entry is hovered,
+   a project's badge when its row is, a tech logo when its name is. */
 @media (prefers-reduced-motion: no-preference) {
     .logo,
+    .badge,
     .stack img {
         transition: transform .25s cubic-bezier(.34, 1.56, .64, 1);
     }
-    .rail article:hover .logo {
+    .rail article:hover .logo,
+    .feature:hover .badge {
         transform: rotate(-6deg);
     }
     .stack li:hover img {
@@ -469,40 +472,134 @@ ul {
     }
 }
 
-/* Project cards pick up the same hard ink shadow as the headings. */
-.cards {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.75rem;
-}
-
-/* An odd last card spans both columns instead of sitting alone in half a row. */
-.card:last-child:nth-child(odd) {
-    grid-column: 1 / -1;
-}
-
-.card {
+/* Each project is a full-width row: media on one side, the write-up on the other, swapping sides
+   down the list. A project without media yet gets the whole row for its text. */
+.features {
     display: flex;
     flex-direction: column;
-    background: rgba(242, 205, 184, .6);
+    gap: 4rem;
+}
+
+.feature {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.feature.no-media {
+    grid-template-columns: 1fr;
+}
+
+.feature:nth-child(even) .media {
+    order: 2;
+}
+
+.feature-text {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+}
+
+.feature h3 {
+    margin: 0;
+}
+
+/* Screenshots and demo videos framed like the profile photo, with its grain. */
+.media {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
     border: 2px solid var(--ink);
     box-shadow: 6px 6px 0 var(--ink);
 }
 
-.card > img {
+.media img,
+.media video {
     display: block;
     width: 100%;
-    aspect-ratio: 16 / 10;
+    height: 100%;
     object-fit: cover;
-    border-bottom: 2px solid var(--ink);
 }
 
-.card-body {
+.media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: var(--grain);
+    mix-blend-mode: overlay;
+    opacity: .55;
+}
+
+/* Logo and product name above the heading. Not uppercased: actually.'s brand is always lowercase. */
+.byline {
     display: flex;
-    flex-direction: column;
-    gap: .5rem;
-    padding: 1.25rem;
-    flex: 1;
+    align-items: center;
+    gap: .6rem;
+    font-family: var(--label);
+    font-weight: 700;
+    font-size: .8rem;
+    letter-spacing: .04em;
+}
+
+/* A small square logo, framed like the timeline logos. */
+.badge {
+    position: relative;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.7rem;
+    height: 1.7rem;
+    overflow: hidden;
+    background: rgba(242, 205, 184, .9);
+    color: var(--ink);
+    font-size: .85rem;
+    border: 2px solid var(--ink);
+    box-shadow: 2px 2px 0 var(--ink);
+}
+
+/* actually.'s mark: shape, letter and dot from its brand sheet (Geist Black, dot at 11% of
+   the frame); the frame and warmed colours are this site's, so it sits with the other logos. */
+.badge.brand {
+    background: #1A1814;
+    color: #EFE3CC;
+    font: 900 1.05rem/1 "Geist", sans-serif;
+}
+
+.badge.brand span {
+    transform: translateY(-2%);
+}
+
+.badge.brand::before {
+    content: "";
+    position: absolute;
+    right: 18%;
+    bottom: 18%;
+    width: 11%;
+    height: 11%;
+    border-radius: 50%;
+    background: #C8452F;
+}
+
+.feature-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    margin-top: .3rem;
+}
+
+.feature-links a {
+    font-family: var(--label);
+    font-size: .7rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.feature-links i {
+    margin-right: .35rem;
 }
 
 a {
@@ -757,8 +854,14 @@ footer {
     .hero {
         padding: 1rem 0 2rem;
     }
-    .cards, .posts, .groups {
+    .posts, .groups, .feature {
         grid-template-columns: 1fr;
+    }
+    .feature {
+        gap: 1.25rem;
+    }
+    .feature:nth-child(even) .media {
+        order: 0;
     }
     .heading {
         font-size: 2.1rem;
