@@ -560,6 +560,14 @@ ul {
     box-shadow: 2px 2px 0 var(--ink);
 }
 
+/* Company logos warmed the same way as on the timeline. */
+.badge img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: sepia(.35) brightness(.9);
+}
+
 /* actually.'s mark: shape, letter and dot from its brand sheet (Geist Black, dot at 11% of
    the frame); the frame and warmed colours are this site's, so it sits with the other logos. */
 .badge.brand {

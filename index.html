@@ -97,7 +97,7 @@
           <div class="media"><img src="{{ project.image }}" alt="{{ project.media_alt }}" loading="lazy"></div>
           {% endif %}
           <div class="feature-text">
-            <p class="byline">{% if project.mark %}<span class="badge brand" aria-hidden="true"><span>{{ project.mark }}</span></span>{% elsif project.icon %}<span class="badge" aria-hidden="true"><i class="{{ project.icon }}"></i></span>{% endif %}{{ project.name }}</p>
+            <p class="byline">{% if project.mark %}<span class="badge brand" aria-hidden="true"><span>{{ project.mark }}</span></span>{% elsif project.logo %}<span class="badge" aria-hidden="true"><img src="{{ project.logo }}" alt=""></span>{% elsif project.icon %}<span class="badge" aria-hidden="true"><i class="{{ project.icon }}"></i></span>{% endif %}{{ project.name }}</p>
             <h3>{{ project.title }}</h3>
             {% if project.summary.first %}{% for para in project.summary %}<p>{{ para }}</p>{% endfor %}{% else %}<p>{{ project.summary }}</p>{% endif %}
             <p class="feature-links">
