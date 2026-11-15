@@ -1,267 +1,983 @@
+:root {
+    --sky: #8ea8b4;
+    --cloud: #f2cdb8;
+    --red: #e3211c;
+    --ink: #1c1717;
+    --display: 'Cherry Swash', Georgia, serif;
+    --label: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+    --body: 'Newsreader', Georgia, serif;
+    --soft: 'Fraunces', Georgia, serif;
+    /* Sticky header's height, so the intro can fill exactly the rest of the first screen. */
+    --header-h: 3.65rem;
+    --grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' seed='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/><feComponentTransfer><feFuncR type='linear' slope='2.2' intercept='-.6'/><feFuncG type='linear' slope='2.2' intercept='-.6'/><feFuncB type='linear' slope='2.2' intercept='-.6'/></feComponentTransfer></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-@font-face {
-    font-family: 'HeadingFont';
-    src: url('./font/Playfair_Display/static/PlayfairDisplay-Regular.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'ParagraphFont';
-    src: url('./font/Crimson_Text/CrimsonText-Regular.ttf') format('truetype');
-}
-
 html {
     font-size: 120%;
+    /* Keeps section headings clear of the sticky header when jumping from the nav. */
+    scroll-padding-top: var(--header-h);
+}
+
+/* Glide to a section from the nav, unless the visitor has asked for less motion. */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
 }
 
 body {
-    background-color: #151515;
+    min-height: 100vh;
+    background: var(--sky);
+    color: var(--ink);
+    font-family: var(--body);
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 1.55;
+}
+
+/* Clouds: soft peach blobs, blurred, fixed behind the page. */
+body::before {
+    content: "";
+    position: fixed;
+    inset: -10%;
+    z-index: -2;
+    background:
+        radial-gradient(28% 22% at 30% 30%, var(--cloud) 0 60%, transparent 100%),
+        radial-gradient(30% 25% at 55% 22%, var(--cloud) 0 55%, transparent 100%),
+        radial-gradient(35% 28% at 45% 55%, var(--cloud) 0 55%, transparent 100%),
+        radial-gradient(25% 20% at 75% 50%, #ecc4b0 0 50%, transparent 100%),
+        radial-gradient(30% 22% at 25% 75%, #eec8b3 0 50%, transparent 100%),
+        var(--sky);
+    filter: blur(40px);
+}
+
+/* Film grain: high-contrast noise blended over the clouds. */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image: var(--grain);
+    mix-blend-mode: overlay;
+    opacity: .95;
 }
 
 header {
-    border-bottom: 1px solid #f4cb6b;
-    display:flex;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    position: fixed;
+    gap: 1rem 2rem;
+    /* Name and nav sit out at the window edges, framing the centred content below. */
+    padding: 1rem 2.5rem;
+    position: sticky;
     top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #151515;
-    height: 4rem;
     z-index: 1;
+    /* Translucent so the clouds and grain still show through as content scrolls under. */
+    background: rgba(242, 205, 184, .7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 2px solid var(--ink);
 }
 
-header,
-footer {
-    padding: 1rem 2rem;
+header .name {
+    font-size: clamp(1.5rem, 2.2vw, 2rem);
+    /* Thinner outline and shadow at this size, so the black doesn't swamp the red. */
+    -webkit-text-stroke: .75px var(--ink);
+    text-shadow: 2px 2px 0 var(--ink);
+    white-space: nowrap;
 }
 
-.home-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding-top: 7rem;
-    margin: 0 2rem;
-}
-
-.home-image {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.home-text,
-.contact-details,
-footer {
-    text-align: center;
-}
-
-.about-section,
-.projects-section,
-.contact-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-top: 4rem;
-    margin: 0 2rem;
-}
-
-.about-skills {
-    display: inline-flex;
-    justify-content: center;
-}
-
-figure {
-    display: flex;
-    align-items: center;
-    padding-top: 1.5rem;
-}
-
-h1,
-nav a:link,
-nav a:visited,
-nav a:hover,
-nav a:active {
-    color: #d8c084;
-}
-
-h1 {
-    font-size: 1.5rem;
-}
-
-h2 {
-    color: #ebd18d;
-}
-
-h3 {
-    color: #eddfab;
-    font-size: 1.25rem;
-}
-
-a {
-    font-weight: 700;
-}
-
-figcaption {
-    font-style: italic;
-}
-
-nav a {
-    font-size: 1rem;
-    text-transform: lowercase;
+header .name a {
+    color: inherit;
+    font-weight: inherit;
     text-decoration: none;
-    padding-right: 1rem;
 }
 
-h3 a {
-    font-size: 1.1rem;
-}
-
-h1,
-h2,
-h3,
-h4,
-nav a {
-    font-family: 'HeadingFont', serif;
-}
-
-h1,
-.name {
+nav a, .meta {
+    font-family: var(--label);
+    font-stretch: 125%;
+    font-weight: 700;
+    font-size: .7rem;
+    letter-spacing: .12em;
     text-transform: uppercase;
-    letter-spacing: 0.5rem;
 }
 
-p,
-figcaption {
-    color: #efe8ae;
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
-p,
-figcaption,
-a {
-    font-family: 'ParagraphFont', serif;
-    font-size: 1.25rem;
+nav a {
+    color: var(--ink);
+    text-decoration: none;
+    font-stretch: 100%;
+    letter-spacing: .06em;
 }
 
-footer p {
-    color: #d8c084;
-    font-size: 1rem;
+nav a:hover {
+    color: var(--red);
 }
 
-.home-text{
-    font-size: 1rem;
+/* Experience and Projects each hold a list of their entries, hidden until hovered. */
+/* Flex so the link sits on the same line as the plain nav links instead of the body text's taller line box. */
+.nav-item {
+    position: relative;
+    display: flex;
 }
 
-.name {
-    font-size: 3rem;
+/* Frosted like the header, with soft rounded edges and a soft shadow: a lighter touch than the
+   hard-edged cards, so it reads as a passing menu rather than part of the page. */
+.dropdown {
+    position: absolute;
+    top: calc(100% + .75rem);
+    /* Opens leftward: the nav sits at the window's right edge, so a rightward list would run off it. */
+    right: -.75rem;
+    z-index: 2;
+    min-width: 13rem;
+    margin: 0;
+    padding: .35rem;
+    list-style: none;
+    background: rgba(246, 222, 206, .85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(28, 23, 23, .14);
+    border-radius: 12px;
+    box-shadow: 0 14px 34px rgba(28, 23, 23, .16), 0 2px 6px rgba(28, 23, 23, .08);
+    /* Hidden but present, so it can fade and slide in; hidden elements can't take focus either. */
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity .15s ease, transform .15s ease, visibility 0s linear .15s;
 }
 
-a:link,
-.name {
-    color: #d6a861;
+/* Invisible strip over the gap below the link, so the pointer can reach the list without it closing. */
+.dropdown::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 100%;
+    height: 1rem;
 }
 
-a:visited,
-a:hover,
-a:active {
-    color: #f4cb6b;
+.dropdown a {
+    display: block;
+    padding: .5rem .75rem;
+    border-radius: 8px;
+    font-family: var(--label);
+    font-stretch: 100%;
+    font-weight: 700;
+    font-size: .72rem;
+    letter-spacing: .01em;
+    text-transform: none;
+    white-space: nowrap;
 }
 
-.profile {
-    border-radius: 50%;
-    width: 20%;
-    height: auto;
-    padding-bottom: 1rem;
+.dropdown a:hover,
+.dropdown a:focus-visible {
+    background: rgba(28, 23, 23, .07);
+    color: var(--red);
+    outline: none;
 }
 
-.about-skills img {
-    height: 2.5rem;
+/* Only where there's a real pointer and the header is pinned: on phones a tap just goes to the section. */
+@media (hover: hover) and (min-width: 786px) {
+    /* Keyboard focus opens it too, but not a mouse click, which would leave it open after the jump. */
+    .nav-item:hover .dropdown,
+    .nav-item:has(:focus-visible) .dropdown {
+        visibility: visible;
+        opacity: 1;
+        transform: none;
+        transition: opacity .15s ease, transform .15s ease;
+    }
 }
 
-.heading {
-    padding: 1rem 0;
+@media (prefers-reduced-motion: reduce) {
+    .dropdown,
+    .nav-item:hover .dropdown {
+        transform: none;
+        transition: none;
+    }
 }
 
-.heading-content {
+/* One column for every section, so all left edges line up. */
+main {
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Poster hero: giant name, framed photo beside the intro. */
+/* The intro fills the first screen on its own (minus the header), centred, so Experience starts below the fold. */
+.hero {
+    display: grid;
+    align-content: center;
+    min-height: calc(100svh - var(--header-h));
     padding: 2rem 0;
 }
 
-.web-dev,
-.data-science,
-.general {
-    padding-right: 5rem;
-    padding-top: 1.5rem;
+.hero-row {
+    display: grid;
+    grid-template-columns: 14rem 1fr;
+    align-items: center;
+    gap: 2.5rem;
 }
 
-.project1 img,
-.project2 img,
-.project3 img {
-    height: 13rem;
-    border: 1px solid lightgrey;
+.hero-text {
+    display: grid;
+    gap: 1rem;
+    justify-items: start;
 }
 
-.projects {
+.button {
+    display: inline-block;
+    padding: .6rem 1.1rem;
+    background: var(--red);
+    color: var(--ink);
+    border: 2px solid var(--ink);
+    box-shadow: 4px 4px 0 var(--ink);
+    font-family: var(--label);
+    font-stretch: 125%;
+    font-size: .7rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.button:hover {
+    color: var(--ink);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--ink);
+}
+
+/* The poster treatment: red fill, ink outline, hard ink shadow. */
+.name, .heading {
+    font-family: var(--display);
+    font-weight: 700;
+    color: var(--red);
+    -webkit-text-stroke: 1.5px var(--ink);
+    text-shadow: 3px 3px 0 var(--ink);
+    line-height: 1;
+}
+
+.name {
+    font-size: clamp(3.5rem, 12vw, 9.5rem);
+    line-height: .92;
+    -webkit-text-stroke: 2.5px var(--ink);
+    text-shadow: 5px 5px 0 var(--ink);
+    text-wrap: balance;
+}
+
+.heading {
+    font-size: 2.6rem;
+    padding-bottom: 1.5rem;
+}
+
+/* Intro reads like poster copy: a big italic line, then quieter body text. */
+.tagline {
+    font-family: var(--soft);
+    font-weight: 300;
+    font-style: italic;
+    font-variation-settings: 'SOFT' 100;
+    font-size: 1.75rem;
+    line-height: 1.15;
+    text-wrap: balance;
+}
+
+/* Resume button and contact icons share one row; the icons are round badges with the buttons' hard shadow. */
+.actions,
+.socials {
     display: flex;
-    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
-.project1,
-.project2,
-.project3 {
+.actions {
+    gap: 1rem 1.5rem;
+}
+
+.socials {
+    gap: .75rem;
+}
+
+.socials a {
+    display: grid;
+    place-items: center;
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 50%;
+    background: var(--cloud);
+    border: 2px solid var(--ink);
+    box-shadow: 3px 3px 0 var(--ink);
+    color: var(--ink);
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+.socials a:hover {
+    color: var(--red);
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 var(--ink);
+}
+
+.about {
+    max-width: 30rem;
+}
+
+/* Every section gets at least a screen to itself, like the intro, so no two share the view. */
+.section {
+    min-height: calc(100svh - var(--header-h));
+    padding-block: 4rem;
+}
+
+/* Same soft italic as the "Hello." line, so titles echo the intro. */
+h3 {
+    font-family: var(--soft);
+    font-style: italic;
+    font-weight: 300;
+    font-variation-settings: 'SOFT' 100;
+    font-size: 1.3rem;
+    line-height: 1.25;
+}
+
+ul {
+    display: grid;
+    gap: .3rem;
+    padding-left: 1.1rem;
+}
+
+.meta {
+    padding: .25rem 0 .5rem;
+}
+
+/* Experience and Education as a vertical rail: one ink line, each logo sits on it as a stop. */
+.rail {
     position: relative;
-    text-align: center;
-    display: inline-flex;
+    display: grid;
+    gap: 3rem;
+    padding: 0 0 0 4rem;
 }
 
-.project1-caption,
-.project2-caption,
-.project3-caption {
+.rail::before {
+    content: "";
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #efe8ae;
+    left: 1.2rem;
+    top: 1.5rem;
+    bottom: .5rem;
+    width: 2px;
+    background: var(--ink);
+}
+
+/* A small dot ends the line, centred on its bottom tip. */
+.rail::after {
+    content: "";
+    position: absolute;
+    left: calc(1.2rem + 1px - .3rem);
+    bottom: calc(.5rem - .3rem);
+    width: .6rem;
+    height: .6rem;
+    border-radius: 50%;
+    background: var(--ink);
+}
+
+.rail article {
+    position: relative;
+    display: grid;
+    gap: .6rem;
+}
+
+/* Each role's detail as small themed cards, all visible. */
+.groups {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: .4rem;
+}
+
+.group {
+    display: grid;
+    gap: .5rem;
+    align-content: start;
+    padding: 1rem 1.1rem;
+    background: rgba(242, 205, 184, .55);
+    border: 2px solid var(--ink);
+}
+
+.group h4 {
+    font-family: var(--label);
+    font-weight: 700;
+    font-size: .62rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--red);
+}
+
+.group ul,
+.group p {
+    font-size: .82rem;
+}
+
+/* A card with intro paragraphs or sections carries more text, so it takes the whole row. */
+.group-wide {
+    grid-column: 1 / -1;
+}
+
+/* Nested bullets sit a little in from their parent. */
+.group ul ul {
+    padding-top: .3rem;
+    list-style: circle;
+}
+
+/* Bold lead-in phrases inside card bullets; 600 is the heaviest Newsreader weight loaded. */
+.group strong {
+    font-weight: 600;
+}
+
+/* Lead line introducing each part of a card, in the same soft italic as the titles. */
+.group .group-lead {
+    padding-top: .5rem;
+    font-family: var(--soft);
+    font-style: italic;
+    font-weight: 300;
+    font-variation-settings: 'SOFT' 100;
+    font-size: .95rem;
+}
+
+/* Tech stack as logo + name, spaced out with no pills. */
+.stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .55rem 1.3rem;
+    padding: .3rem 0 0;
+    list-style: none;
+    font-size: .85rem;
+}
+
+.stack li {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+}
+
+.stack img {
+    width: 1.05rem;
+    height: 1.05rem;
+    /* A faint ink edge keeps pale logos (React's light cyan) visible on the peach. */
+    filter: drop-shadow(0 0 .6px rgba(28, 23, 23, .55));
+}
+
+.rail .rail-node {
+    position: absolute;
+    left: -4rem;
+    top: .5rem;
+}
+
+/* Roles without a logo get a plain stop on the line. */
+.rail .rail-dot {
+    left: -3.2rem;
+    top: 1rem;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background: var(--red);
+    border: 2px solid var(--ink);
+}
+
+.when {
+    font-family: var(--label);
+    font-weight: 700;
+    font-size: .65rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--red);
+    padding-top: .9rem;
+}
+
+/* Company logos as small square badges, framed like the contact icons, with the photo's grain. */
+.logo {
+    position: relative;
+    width: 2.5rem;
+    height: 2.5rem;
+    overflow: hidden;
+    background: #ffffff;
+    border: 2px solid var(--ink);
+    box-shadow: 3px 3px 0 var(--ink);
+}
+
+/* Education entries are a line or two each, so their stops sit closer together. */
+#education .rail {
+    gap: 1.75rem;
+}
+
+.logo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Warms pure white to cream so logos sit in the peach palette instead of glaring. */
+    filter: sepia(.35) brightness(.9);
+}
+
+.logo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: var(--grain);
+    mix-blend-mode: overlay;
+    opacity: .55;
+}
+
+/* Logos tip slightly on hover, like a card knocked on a pinboard: a timeline logo when its entry is hovered,
+   a project's badge when its row is, a tech logo when its name is. */
+@media (prefers-reduced-motion: no-preference) {
+    .logo,
+    .badge,
+    .stack img {
+        transition: transform .25s cubic-bezier(.34, 1.56, .64, 1);
+    }
+    .rail article:hover .logo,
+    .feature:hover .badge {
+        transform: rotate(-6deg);
+    }
+    .stack li:hover img {
+        transform: rotate(-12deg) scale(1.15);
+    }
+}
+
+/* Each project is a full-width row: media on one side, the write-up on the other, swapping sides
+   down the list. A project without media yet gets the whole row for its text. */
+.features {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.feature {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.feature.no-media {
+    grid-template-columns: 1fr;
+}
+
+.feature:nth-child(even) .media {
+    order: 2;
+}
+
+.feature-text {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+}
+
+.feature h3 {
+    margin: 0;
+}
+
+/* Screenshots and demo videos framed like the profile photo, with its grain. */
+/* Screenshots keep their own shape; videos get a fixed frame so the row doesn't jump as they load. */
+.media {
+    position: relative;
+    overflow: hidden;
+    border: 2px solid var(--ink);
+    box-shadow: 6px 6px 0 var(--ink);
+}
+
+.media-video {
+    aspect-ratio: 16 / 10;
+}
+
+.media img,
+.media video {
+    display: block;
     width: 100%;
 }
 
-.project1 figcaption,
-.project2 figcaption,
-.project3 figcaption {
-    color: #d6a861;
+.media video {
+    height: 100%;
+    object-fit: cover;
+}
+
+.media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: var(--grain);
+    mix-blend-mode: overlay;
+    opacity: .55;
+}
+
+/* Logo and product name above the heading. Not uppercased: actually.'s brand is always lowercase. */
+.byline {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    font-family: var(--label);
     font-weight: 700;
+    font-size: .8rem;
+    letter-spacing: .04em;
 }
 
-.project2,
-.project3 {
-    display: none;
+/* A small square logo, framed like the timeline logos. */
+.badge {
+    position: relative;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.7rem;
+    height: 1.7rem;
+    overflow: hidden;
+    background: rgba(242, 205, 184, .9);
+    color: var(--ink);
+    font-size: .85rem;
+    border: 2px solid var(--ink);
+    box-shadow: 2px 2px 0 var(--ink);
 }
 
-/* This is where the nav bar takes up more than one line */
+/* Company logos warmed the same way as on the timeline. */
+.badge img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: sepia(.35) brightness(.9);
+}
+
+/* actually.'s mark: shape, letter and dot from its brand sheet (Geist Black, dot at 11% of
+   the frame); the frame and warmed colours are this site's, so it sits with the other logos. */
+.badge.brand {
+    background: #1A1814;
+    color: #EFE3CC;
+    font: 900 1.05rem/1 "Geist", sans-serif;
+}
+
+.badge.brand span {
+    transform: translateY(-2%);
+}
+
+.badge.brand::before {
+    content: "";
+    position: absolute;
+    right: 18%;
+    bottom: 18%;
+    width: 11%;
+    height: 11%;
+    border-radius: 50%;
+    background: #C8452F;
+}
+
+.feature-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    margin-top: .3rem;
+}
+
+.feature-links a {
+    font-family: var(--label);
+    font-size: .7rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.feature-links i {
+    margin-right: .35rem;
+}
+
+a {
+    color: var(--ink);
+    font-weight: 600;
+    text-decoration-color: var(--red);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+}
+
+a:hover {
+    color: var(--red);
+}
+
+a:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
+}
+
+/* Original colours in an ink frame with a hard shadow, lighter grain than the page over the top. */
+.profile {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border: 2px solid var(--ink);
+    box-shadow: 6px 6px 0 var(--ink);
+}
+
+.profile img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: var(--grain);
+    mix-blend-mode: overlay;
+    opacity: .55;
+}
+
+/* Post titles are links but keep the light italic of the other titles. */
+h3 a {
+    font-weight: inherit;
+}
+
+/* Small link icon after a job title: no underline, turns red on hover. */
+h3 .title-link {
+    margin-left: .3rem;
+    font-size: .75em;
+    vertical-align: .1em;
+    text-decoration: none;
+}
+
+/* Substack cards span the row; X posts pair up beneath. X renders each post in its own
+   iframe, so only its width, link previews and thread are ours to set. */
+.posts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 1.75rem;
+}
+
+.posts .twitter-tweet {
+    margin: 0 !important;
+}
+
+/* Built to sit beside X's white cards: same white, hairline border and radius, system sans. */
+.substack-card {
+    grid-column: 1 / -1;
+    display: grid;
+    gap: .5rem;
+    padding: 1.25rem 1.5rem;
+    background: #ffffff;
+    border: 1px solid #cfd9de;
+    border-radius: 12px;
+    color: #1a1a1a;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+.substack-card:hover {
+    color: #1a1a1a;
+    border-color: #a8b4ba;
+}
+
+.sc-pub,
+.sc-author,
+.sc-date {
+    font-size: .65rem;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+}
+
+.sc-pub,
+.sc-date {
+    color: #6b6b6b;
+}
+
+.sc-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.15;
+}
+
+.sc-sub {
+    font-size: .95rem;
+    color: #6b6b6b;
+}
+
+.sc-byline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem 0 .9rem;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.sc-byline > span {
+    display: grid;
+    gap: .15rem;
+}
+
+.sc-byline img {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+}
+
+.sc-intro {
+    padding-top: .4rem;
+    font-size: .85rem;
+    line-height: 1.55;
+    color: #3d3d3d;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 4rem 2rem 3rem;
+    text-align: center;
+}
+
+.footer-note {
+    max-width: 30rem;
+    font-size: .75rem;
+}
+
+/* POPIA confirm step before the resume downloads; same border and hard shadow as the buttons. */
+#resume-dialog {
+    width: min(32rem, calc(100% - 2rem));
+    padding: 0;
+    margin: auto;
+    background: var(--cloud);
+    color: var(--ink);
+    border: 2px solid var(--ink);
+    box-shadow: 8px 8px 0 var(--ink);
+}
+
+#resume-dialog::backdrop {
+    background: rgba(28, 23, 23, .45);
+}
+
+.dialog-body {
+    position: relative;
+    display: grid;
+    gap: 1rem;
+    padding: 1.5rem;
+}
+
+/* Keeps the title clear of the close button. */
+.dialog-body h2 {
+    padding-right: 2.5rem;
+}
+
+.dialog-body h2 {
+    font-family: var(--soft);
+    font-style: italic;
+    font-weight: 300;
+    font-variation-settings: 'SOFT' 100;
+    font-size: 1.4rem;
+}
+
+.dialog-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem 1.5rem;
+    padding-top: .5rem;
+}
+
+/* Plain close × in the dialog's top-right corner; the box keeps a comfortable click area. */
+.dialog-close {
+    position: absolute;
+    top: .9rem;
+    right: .9rem;
+    display: grid;
+    place-items: center;
+    width: 1.9rem;
+    height: 1.9rem;
+    padding: 0;
+    background: none;
+    color: var(--ink);
+    border: 0;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.dialog-close:hover {
+    color: var(--red);
+}
+
+.dialog-close:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
+}
+
 @media only screen and (max-width: 785px) {
+    /* On phones the header is name plus wrapped nav, too tall to pin. */
+    html {
+        scroll-padding-top: 0;
+    }
     header {
-        border-bottom: 1px solid #f4cb6b;
-        display:flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        background-color: #151515;
-        height: 8rem;
-        z-index: 1;
+        position: static;
     }
-    h1 {
-        font-size: 1.9rem;
+    header .name {
+        white-space: normal;
+        text-align: center;
     }
-    .home-section {
-        padding-top: 11rem;
+    nav {
+        justify-content: center;
     }
-  }
+    nav {
+        gap: .5rem 1rem;
+    }
+    .hero-row {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+    .profile {
+        width: 12rem;
+    }
+    .hero {
+        padding: 1rem 0 2rem;
+    }
+    .posts, .groups, .feature {
+        grid-template-columns: 1fr;
+    }
+    .feature {
+        gap: 1.25rem;
+    }
+    .feature:nth-child(even) .media {
+        order: 0;
+    }
+    .heading {
+        font-size: 2.1rem;
+    }
+    .rail {
+        padding-left: 2.75rem;
+    }
+    .rail::before {
+        left: .9rem;
+    }
+    .rail::after {
+        left: calc(.9rem + 1px - .3rem);
+    }
+    .rail .rail-node {
+        left: -2.75rem;
+        width: 2rem;
+        height: 2rem;
+    }
+    .rail .rail-dot {
+        left: -2.25rem;
+    }
+}

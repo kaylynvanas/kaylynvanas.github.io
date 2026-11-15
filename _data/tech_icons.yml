@@ -1,0 +1,70 @@
+# Logo for each name used in a `tech:` list. A name missing here just shows without a logo.
+# Devicon (MIT) for most; Simple Icons (CC0) where Devicon has none. LangGraph uses its maker
+# LangChain's mark; Power BI comes from an older Simple Icons release that still includes it.
+Python: https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/python/python-original.svg
+FastAPI: https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/fastapi/fastapi-original.svg
+TypeScript: https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/typescript/typescript-original.svg
+React: https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/react/react-original.svg
+PostgreSQL: https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/postgresql/postgresql-original.svg
+Airflow: https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/apacheairflow/apacheairflow-original.svg
+AWS: https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/amazonwebservices/amazonwebservices-original-wordmark.svg
+Terraform: https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/terraform/terraform-original.svg
+pandas: https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/pandas/pandas-original.svg
+SQL Server: https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/microsoftsqlserver/microsoftsqlserver-original.svg
+Azure: https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/azure/azure-original.svg
+Claude Agent SDK: https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/claude.svg
+Claude API: https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/claude.svg
+LangGraph: https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/langchain.svg
+Xero API: https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/xero.svg
+Power BI: https://cdn.jsdelivr.net/npm/simple-icons@11.0.0/icons/powerbi.svg
+# Adsum stack. Valkey, HMRC, Alembic, loguru and AWS WAF have no logo in either set,
+# so they show as names only. MCP, OpenRouter and Neon come from a newer Simple Icons release.
+Playwright: https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/playwright/playwright-original.svg
+AWS SQS: https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/amazonsqs.svg
+Superset: https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/apachesuperset.svg
+Flask: https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/flask/flask-original.svg
+Node.js: https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/nodejs/nodejs-original.svg
+Express: https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/express/express-original.svg
+SQLAlchemy: https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/sqlalchemy/sqlalchemy-original.svg
+Pydantic: https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/pydantic.svg
+Drizzle ORM: https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/drizzle.svg
+Zod: https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/zod.svg
+Xero: https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/xero.svg
+QuickBooks: https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/quickbooks.svg
+Clerk: https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/clerk.svg
+MUI: https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/materialui/materialui-original.svg
+TanStack Query: https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/reactquery.svg
+Vite: https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/vitejs/vitejs-original.svg
+pytest: https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/pytest/pytest-original.svg
+Vitest: https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/vitest/vitest-original.svg
+Anthropic API: https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/anthropic.svg
+OpenAI API: https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/openai.svg
+LangChain: https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/langchain.svg
+LangSmith: https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/langchain.svg
+MCP: https://cdn.jsdelivr.net/npm/simple-icons@16.20.0/icons/modelcontextprotocol.svg
+OpenRouter: https://cdn.jsdelivr.net/npm/simple-icons@16.20.0/icons/openrouter.svg
+Claude Code: https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/claude.svg
+AWS S3: https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/amazons3.svg
+AWS ElastiCache: https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/amazonelasticache.svg
+AWS Secrets Manager: https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/awssecretsmanager.svg
+Redis: https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/redis/redis-original.svg
+Neon: https://cdn.jsdelivr.net/npm/simple-icons@16.20.0/icons/neon.svg
+GitHub Actions: https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/githubactions/githubactions-original.svg
+Kubernetes: https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/kubernetes/kubernetes-original.svg
+Sentry: https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/sentry/sentry-original.svg
+New Relic: https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/newrelic.svg
+Grafana Loki: https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/grafana/grafana-original.svg
+CloudWatch: https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/amazoncloudwatch.svg
+PostHog: https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/posthog.svg
+# &Wider stack.
+NumPy: https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/numpy/numpy-original.svg
+Looker Studio: https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/looker.svg
+WhatsApp: https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/whatsapp.svg
+WeChat: https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/wechat.svg
+Twilio: https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/twilio.svg
+Postman: https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/postman/postman-original.svg
+GitHub: https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/github/github-original.svg
+# Saved locally: neither icon set has these.
+Postmark: /images/tech/postmark.png
+Jotform: /images/tech/jotform.png
+Telerivet: /images/tech/telerivet.png

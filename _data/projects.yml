@@ -1,0 +1,105 @@
+# Personal projects first, then work projects. Copy a block to add one.
+# Each project is a row: media on one side, the write-up on the other.
+#
+# name:      product, repo or company name, shown small above the heading with the logo.
+# title:     the heading: what it is, not what it's called.
+# mark:      a letter drawn as actually.'s brand mark; or
+# logo:      a square image in images/, e.g. a company logo; or
+# icon:      a Font Awesome class for the logo instead, e.g. "fa-brands fa-github".
+# summary:   one paragraph, or a list for several.
+# video:     a short screen recording, e.g. /images/actually-demo.mp4. Keep it under ~10 MB:
+#            it plays muted on a loop. Give it a poster: a still image shown until it loads.
+# image:     a screenshot instead of a video, e.g. /images/skills.png.
+# media_alt: what the video or screenshot shows, for screen readers.
+# url, repo: links; leave either out to hide it.
+# Without a video or image, the text takes the whole row.
+- name: actually.
+  title: Nutrition tracking MCP server
+  mark: a
+  image: /images/actually.webp
+  media_alt: The askactually.co.za landing page, with a chat where Claude logs a breakfast through actually.
+  summary:
+    - >-
+      actually. turns the AI assistant you already use into a nutrition tracker. Connect it to
+      Claude, tell it what you ate, and it looks each food up in a South African food database,
+      asks only the questions that change the numbers, and logs just the nutrients you follow.
+    - >-
+      The server does the arithmetic, not the model. It reports numbers and never gives dietary
+      advice.
+  url: https://askactually.co.za
+
+- name: kaylynvanas/skills
+  title: Claude Code skills
+  icon: fa-brands fa-github
+  summary: >-
+    My Claude Code skills, including one that coaches you through a ticket like a systems
+    design interview before you write any code: one question at a time, hints when you're
+    stuck, and a log of your gaps to revisit on future tickets.
+  repo: https://github.com/kaylynvanas/skills
+
+- name: Adsum
+  title: Accountant month-end close agent
+  logo: /images/adsum.jpeg
+  summary:
+    - >-
+      A multi-agent review of a client's books at month end. Agents and sub-agents each check
+      one area: payroll reconciliation, marketplace payouts (Shopify, Stripe, Amazon, eBay)
+      against the accounting ledger, spending that should have been recorded as an asset
+      rather than an expense, and numerous VAT checks.
+    - >-
+      I raised agent accuracy from under 50% to over 90% with golden datasets and benchmarks
+      that test for accuracy and consistency. Client context goes into the agent's long-term
+      memory, and each client gets an AI-generated PDF month-end report. The agents have run
+      thousands of checks on real client ledgers.
+
+- name: Adsum
+  title: Accountant payment reminder assistant
+  logo: /images/adsum.jpeg
+  summary:
+    - >-
+      A chat assistant that drafts tax payment reminder emails for accountants to send their
+      clients. I wrote the tax-specific prompts and personalised greetings, and built controls
+      that let accountants give the AI their own instructions.
+    - >-
+      I built MCP tools that log in to HMRC and fetch live tax data, designed the database for
+      conversations, drafts and agent state, streamed the agent's progress to the UI over
+      WebSockets, and added LangSmith tracing to debug and monitor its runs.
+
+- name: OpenTax · Adsum
+  title: UK tax tracking platform for accountants
+  logo: /images/adsum.jpeg
+  summary:
+    - >-
+      A SaaS platform that pulls UK tax data directly from HMRC and from Xero and QuickBooks,
+      so accountants can track what every client owes. 830+ UK accountancy practices have
+      onboarded.
+    - >-
+      I build across the whole stack: role-based access, an in-house authenticator that keeps
+      automated HMRC logins working, a "time machine" showing what each client owed on any
+      past date, editable reminder emails, and a public REST API for partners.
+  url: https://opentax.adsum-works.com/
+
+- name: Landscape Assessments · &Wider
+  title: Multi-brand human-rights risk benchmarks
+  logo: /images/andwider.jpeg
+  summary:
+    - >-
+      A paid &Wider product in which several global brands jointly fund a survey of a shared
+      sourcing region or sector. Each brand benchmarks its own suppliers against the
+      aggregated results to see how its human-rights risk compares.
+    - >-
+      I built and delivered assessments covering cocoa, sugar, logistics and agriculture
+      across five continents.
+
+- name: Engage · &Wider
+  title: Supply chain human-rights monitoring app
+  logo: /images/andwider.jpeg
+  summary:
+    - >-
+      A progressive web app that lets global brands monitor human-rights impacts and working
+      conditions across their supply chains.
+    - >-
+      I designed its database and the full user journey from login to the data dashboards,
+      the supplier risk scoring and traffic-light system that flags high- and low-risk
+      suppliers, and the anonymity rules that switch off filters such as gender when a group
+      is small enough to identify someone.

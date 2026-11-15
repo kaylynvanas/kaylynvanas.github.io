@@ -1,0 +1,40 @@
+# Your details, used across the site. Leave a value blank ("") to hide that link.
+name: Kaylyn Van As
+# Used for the search-engine description; the page itself just says hello.
+tagline: Software engineer based in Cape Town.
+# One entry per paragraph.
+about:
+  - >-
+    I'm Kaylyn, a Cape Town-based software engineer with more than six years across data,
+    backend, full-stack and applied AI in global startups – currently building production
+    AI agents and SaaS for the UK accounting industry.
+  - >-
+    I am a deeply product-minded engineer, with a desire to contribute meaningfully to the
+    African tech ecosystem. I have been praised for my attention to detail, professionalism,
+    and genuine care for customer experience.
+
+email: kaylynvanas@gmail.com
+github: kaylynvanas
+linkedin: https://www.linkedin.com/in/kaylyn-van-as-a99678129/
+
+# Your résumé PDF in the repo root. The file name is what people see when they save it.
+resume: /Kaylyn-Van-As-AI-Product-Engineer.pdf
+# Small print at the foot of every page.
+footer_note: >-
+  Personal information on this site is shared for recruitment purposes.
+  Please handle it in line with POPIA.
+# Shown in a confirm step before the resume downloads. Plain-language wording, not legal advice.
+resume_notice: >-
+  My résumé contains personal information protected under South Africa's Protection of Personal
+  Information Act (POPIA). Please use it only to consider me for roles, don't share it with
+  third parties without my consent, and delete it once it's no longer needed.
+
+# Your Substack address, e.g. https://kaylyn.substack.com
+substack: "https://kaylynvanas.substack.com"
+# Your Substack profile photo, shown on the post cards (the feed doesn't include it).
+substack_avatar: "https://substackcdn.com/image/fetch/w_96,h_96,c_fill,f_auto,q_auto:good/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F93613d57-d405-4e1b-a81b-18f30cb15784_484x484.jpeg"
+# Your X handle without the @
+x_handle: "kaylynvanas"
+
+exclude:
+  - scripts

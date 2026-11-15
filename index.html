@@ -1,131 +1,194 @@
+---
+---
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Kaylyn Van As</title>
+  <meta charset="utf-8">
+  <title>{{ site.name }}</title>
+  <meta name="description" content="{{ site.tagline }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href='./style.css' rel='stylesheet'>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cherry+Swash:wght@700&family=Archivo:wdth,wght@100..125,700&family=Fraunces:ital,opsz,wght,SOFT@1,9..144,300,100&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,600;1,6..72,300&display=swap" rel="stylesheet">
+  <!-- Only the letter "a" in Geist Black, for the actually. brand mark. -->
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@900&text=a&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <link href="./style.css" rel="stylesheet">
 </head>
 <body>
   <header>
-    <h1>Kaylyn Van As</h1>
+    <h1 class="name"><a href="#about">{{ site.name }}</a></h1>
     <nav>
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
+      <!-- On hover (or keyboard focus) Experience and Projects drop down a list that jumps to each entry. -->
+      <div class="nav-item">
+        <a href="#experience">Experience</a>
+        <ul class="dropdown">{% for job in site.data.experience %}<li><a href="#job-{{ forloop.index }}">{{ job.company }}</a></li>{% endfor %}</ul>
+      </div>
+      <div class="nav-item">
+        <a href="#projects">Projects</a>
+        <ul class="dropdown">{% for project in site.data.projects %}<li><a href="#project-{{ forloop.index }}">{{ project.title }}</a></li>{% endfor %}</ul>
+      </div>
+      <a href="#education">Education</a>
+      {% if site.substack != "" %}<a href="#writing">Writing</a>{% endif %}
     </nav>
   </header>
   <main>
-    <div class="home-section" id="home">
-      <div class="home-image">
-        <img src="./images/profile.jpg" alt="profile photo" class="profile">
-      </div>
-      <div class="home-text">
-        <h2>Hello! My name is</h2>
-        <br>
-        <h2 class="name">Kaylyn Van As</h2>
-        <br>
-        <h2>I am an analyst and full stack engineering student based in Cape Town, South Africa.</h2>
-      </div>
-    </div>
-    <div class="about-section" id="about">
-      <h2 class="heading">About</h2>
-      <div class="about-text">
-        <p>I am a full stack development bootcamp student and data analyst based in Cape Town, South Africa. I am a lifelong learner whose aim is to create 
-          beautiful, impactful and accessible software.</p>
-        <br>
-        <!-- <p>I have a range of skills within the realms of full stack engineering and data science. View my full <a href="#" target="_blank">resume</a> or 
-          <a href="https://www.linkedin.com/in/kaylyn-van-as-a99678129/" target="_blank">LinkedIn</a>.</p> -->
-        <p>I have a range of skills within the realms of full stack engineering and data science. View my <a href="https://www.linkedin.com/in/kaylyn-van-as-a99678129/" target="_blank">LinkedIn</a>.</p>
-      </div>
-      <div class="about-skills">
-        <div class="web-dev">
-          <figure>
-            <img src="./images/icons8-html-5-48.png" alt="HTML icon by Icons8">
-            <figcaption>HTML</figcaption>
-          </figure>
-          <figure>
-            <img src="./images/icons8-css3-48.png" alt="CSS icon by Icons8">
-            <figcaption>CSS</figcaption>
-          </figure>
-          <figure>
-            <img src="./images/icons8-javascript-48.png" alt="JavaScript icon by Icons8">
-            <figcaption>JavaScript</figcaption>
-          </figure>
-        </div>
-        <div class="data-science">
-          <figure>
-            <img src="./images/icons8-python-48.png" alt="Python icon by Icons8">
-            <figcaption>Python</figcaption>
-          </figure>
-          <figure>
-            <img src="./images/pandas_mark_white.svg" alt="Pandas">
-            <figcaption>Pandas</figcaption>
-          </figure>
-          <figure>
-            <img src="./images/icons8-numpy-48.png" alt="NumPy icon by Icons8">
-            <figcaption>NumPy</figcaption>
-          </figure>
-        </div>
-        <div class="general">
-          <figure>
-            <img src="./images/icons8-microsoft-sql-server-48.png" alt="SQL icon by Icons8">
-            <figcaption>SQL</figcaption>
-          </figure>
-          <figure>
-            <img src="./images/icons8-git-48.png" alt="Git icon by Icons8">
-            <figcaption>Git</figcaption>
-          </figure>
-          <figure>
-            <img src="./images/icons8-azure-48.png" alt="Microsoft Azure icon by Icons8">
-            <figcaption>Microsoft Azure</figcaption>
-          </figure>
+    <section class="hero" id="about">
+      <div class="hero-row">
+        <div class="profile"><img src="./images/profile.jpg" alt="Kaylyn Van As"></div>
+        <div class="hero-text">
+          <p class="tagline">Hello.</p>
+          {% for paragraph in site.about %}<p class="about">{{ paragraph }}</p>{% endfor %}
+          <div class="actions">
+            {% if site.resume != "" %}<a target="_blank" rel="noopener" class="button" id="resume-link" href="{{ site.resume }}">Download résumé (PDF)</a>{% endif %}
+            <p class="socials">
+              <a href="mailto:{{ site.email }}" aria-label="Email {{ site.email }}" title="{{ site.email }}"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a>
+              {% if site.linkedin != "" %}<a target="_blank" rel="noopener" href="{{ site.linkedin }}" aria-label="LinkedIn" title="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>{% endif %}
+              <a target="_blank" rel="noopener" href="https://github.com/{{ site.github }}" aria-label="GitHub" title="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="projects-section" id="projects">
+    </section>
+
+    <section class="section" id="experience">
+      <h2 class="heading">Experience</h2>
+      <div class="rail">
+        {% for job in site.data.experience %}
+        <article id="job-{{ forloop.index }}">
+          {% if job.logo %}<span class="logo rail-node"><img src="{{ job.logo }}" alt="{{ job.company }} logo" width="48" height="48"></span>{% else %}<span class="rail-node rail-dot" aria-hidden="true"></span>{% endif %}
+          <p class="when">{{ job.start }} – {{ job.end }}</p>
+          <h3>{{ job.role }}, {{ job.company }}{% if job.url %} <a class="title-link" target="_blank" rel="noopener" href="{{ job.url }}" aria-label="Visit {{ job.company }}'s site" title="{{ job.url | remove: "https://" | remove: "http://" | remove: "www." | split: "/" | first }}"><i class="fa-solid fa-link" aria-hidden="true"></i></a>{% endif %}</h3>
+          {% if job.summary.first %}{% for para in job.summary %}<p>{{ para }}</p>{% endfor %}{% elsif job.summary %}<p>{{ job.summary }}</p>{% endif %}
+          {% if job.groups %}
+          {% comment %} Half-width cards pair up; if their count is odd, the last one spans the row. {% endcomment %}
+          {% assign narrow = 0 %}{% for g in job.groups %}{% if g.wide == false %}{% assign narrow = narrow | plus: 1 %}{% else %}{% unless g.intro or g.sections or g.wide %}{% assign narrow = narrow | plus: 1 %}{% endunless %}{% endif %}{% endfor %}
+          {% assign odd = narrow | modulo: 2 %}{% assign seen = 0 %}
+          <div class="groups">
+            {% for group in job.groups %}
+            {% assign wide = false %}
+            {% if group.wide == false %}{% assign seen = seen | plus: 1 %}{% if odd == 1 and seen == narrow %}{% assign wide = true %}{% endif %}{% elsif group.intro or group.sections or group.wide %}{% assign wide = true %}{% else %}{% assign seen = seen | plus: 1 %}{% if odd == 1 and seen == narrow %}{% assign wide = true %}{% endif %}{% endif %}
+            <div class="group{% if wide %} group-wide{% endif %}">
+              <h4>{{ group.title }}</h4>
+              {% for para in group.intro %}<p class="group-lead">{{ para }}</p>{% endfor %}
+              {% for part in group.sections %}
+              <p class="group-lead">{{ part.lead }}</p>
+              <ul>
+                {% for item in part.items %}<li>{{ item }}</li>{% endfor %}
+              </ul>
+              {% endfor %}
+              {% if group.items %}
+              <ul>
+                {% for item in group.items %}{% if item.text %}<li>{{ item.text }}<ul>{% for sub in item.items %}<li>{{ sub }}</li>{% endfor %}</ul></li>{% else %}<li>{{ item }}</li>{% endif %}{% endfor %}
+              </ul>
+              {% endif %}
+            </div>
+            {% endfor %}
+          </div>
+          {% endif %}
+          {% if job.tech %}<ul class="stack">{% for t in job.tech %}<li>{% assign icon = site.data.tech_icons[t] %}{% if icon %}<img src="{{ icon }}" alt="" width="18" height="18" loading="lazy">{% endif %}{{ t }}</li>{% endfor %}</ul>{% endif %}
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="section" id="projects">
       <h2 class="heading">Projects</h2>
-      <div class="projects">
-        <div class="project1">
-          <img src="./images/project1.png" alt="Portfolio Site">
-          <div class="project1-caption">
-            <figcaption>Portfolio Site</figcaption>
+      <div class="features">
+        {% for project in site.data.projects %}
+        <article class="feature{% unless project.video or project.image %} no-media{% endunless %}" id="project-{{ forloop.index }}">
+          {% if project.video %}
+          <!-- Plays silently on a loop like a GIF; the poster shows until it loads. -->
+          <div class="media media-video"><video src="{{ project.video }}" poster="{{ project.poster }}" autoplay muted loop playsinline aria-label="{{ project.media_alt }}"></video></div>
+          {% elsif project.image %}
+          <div class="media"><img src="{{ project.image }}" alt="{{ project.media_alt }}" loading="lazy"></div>
+          {% endif %}
+          <div class="feature-text">
+            <p class="byline">{% if project.mark %}<span class="badge brand" aria-hidden="true"><span>{{ project.mark }}</span></span>{% elsif project.logo %}<span class="badge" aria-hidden="true"><img src="{{ project.logo }}" alt=""></span>{% elsif project.icon %}<span class="badge" aria-hidden="true"><i class="{{ project.icon }}"></i></span>{% endif %}{{ project.name }}</p>
+            <h3>{{ project.title }}</h3>
+            {% if project.summary.first %}{% for para in project.summary %}<p>{{ para }}</p>{% endfor %}{% else %}<p>{{ project.summary }}</p>{% endif %}
+            <p class="feature-links">
+              {% if project.url %}<a target="_blank" rel="noopener" href="{{ project.url }}"><i class="fa-solid fa-link" aria-hidden="true"></i>{{ project.url | remove: "https://" | remove: "http://" | remove: "www." | split: "/" | first }}</a>{% endif %}
+              {% if project.repo %}<a target="_blank" rel="noopener" href="{{ project.repo }}"><i class="fa-brands fa-github" aria-hidden="true"></i>View on GitHub</a>{% endif %}
+            </p>
           </div>
-        </div>
-        <div class="project2">
-          <img src="./images/project1.png" alt="Portfolio Site">
-          <div class="project2-caption">
-            <figcaption>Portfolio Site</figcaption>
-          </div>
-        </div>
-        <div class="project3">
-          <img src="./images/project1.png" alt="Portfolio Site">
-          <div class="project3-caption">
-            <figcaption>Portfolio Site</figcaption>
-          </div>
-        </div>
-      </div>>
-    </div>
-    <div class="contact-section" id="contact">
-      <h2 class="heading">Contact</h2>
-      <div class="contact-details">
-        <div class="email">
-          <h3 class="heading-content">Email</h3>
-          <h3><a href="mailto:kaylynvanas@gmail.com" target="_blank">kaylynvanas@gmail.com</a></h3>
-        </div>
-        <div class="linkedin">
-          <h3 class="heading-content">LinkedIn</h3>
-          <h3><a href="https://www.linkedin.com/in/kaylyn-van-as-a99678129/" target="_blank">https://www.linkedin.com/in/kaylyn-van-as-a99678129/</a></h3>
-        </div>
-        <div class="github">
-          <h3 class="heading-content">GitHub</h3>
-          <h3><a href="https://github.com/kaylynvanas" target="_blank">https://github.com/kaylynvanas</a></h3>
-        </div>
+        </article>
+        {% endfor %}
       </div>
-    </div>
+    </section>
+
+    <section class="section" id="education">
+      <h2 class="heading">Education</h2>
+      <div class="rail">
+        {% for item in site.data.education %}
+        <article>
+          {% if item.logo %}<span class="logo rail-node"><img src="{{ item.logo }}" alt="{{ item.org }} logo" width="48" height="48"></span>{% else %}<span class="rail-node rail-dot" aria-hidden="true"></span>{% endif %}
+          <p class="when">{{ item.when }}</p>
+          <h3>{{ item.name }}{% if item.credential %} <a class="title-link" target="_blank" rel="noopener" href="{{ item.credential }}" aria-label="Verify the {{ item.name }} credential" title="Verify credential"><i class="fa-solid fa-link" aria-hidden="true"></i></a>{% endif %}</h3>
+          <p>{{ item.org }}</p>
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+
+    {% if site.substack != "" or site.data.x_posts.size > 0 %}
+    <section class="section" id="writing">
+      <h2 class="heading">Writing</h2>
+      <div class="posts">
+        {% assign publication = site.substack | remove: "https://" | remove: "http://" %}
+        {% for post in site.data.substack %}
+        <!-- Substack has no post embed, so this card is built from the saved feed, laid out like a Substack post header. -->
+        <a class="substack-card" target="_blank" rel="noopener" href="{{ post.url }}">
+          <span class="sc-pub">{{ publication }}</span>
+          <span class="sc-title">{{ post.title }}</span>
+          {% if post.subtitle != "" %}<span class="sc-sub">{{ post.subtitle }}</span>{% endif %}
+          <span class="sc-byline">
+            <span><span class="sc-author">{{ post.author | default: site.name }}</span><span class="sc-date">{{ post.date }}</span></span>
+            {% if site.substack_avatar %}<img src="{{ site.substack_avatar }}" alt="" width="48" height="48">{% endif %}
+          </span>
+          {% if post.intro != "" %}<span class="sc-intro">{{ post.intro }}</span>{% endif %}
+        </a>
+        {% endfor %}
+        <!-- X's script turns each link into a post card; if it fails to load, the links stay.
+             shortcut: hand-picked posts only, X's timeline embed doesn't show to logged-out
+             visitors and its API is paid; revisit if either changes. -->
+        {% for post in site.data.x_posts %}
+        <blockquote class="twitter-tweet" data-dnt="true" data-cards="hidden" data-conversation="none"><a target="_blank" rel="noopener" href="{{ post }}">View this post on X</a></blockquote>
+        {% endfor %}
+      </div>
+      {% if site.data.x_posts.size > 0 %}<script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>{% endif %}
+    </section>
+    {% endif %}
+
   </main>
   <footer>
-    <p>i made this.</p>
+    <a class="button" href="#about">Back to top ↑</a>
+    <p class="footer-note">{{ site.footer_note }}</p>
   </footer>
+
+  {% if site.resume != "" %}
+  <dialog id="resume-dialog" aria-labelledby="resume-dialog-title">
+    <div class="dialog-body">
+      <button type="button" class="dialog-close" id="resume-close" aria-label="Close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+      <h2 id="resume-dialog-title">Before you download</h2>
+      <p>{{ site.resume_notice }}</p>
+      <div class="dialog-actions">
+        <a class="button" id="resume-agree" target="_blank" rel="noopener" href="{{ site.resume }}">I agree, download</a>
+      </div>
+    </div>
+  </dialog>
+  <script>
+    // The button stays a plain link if scripts are off; with scripts it asks first.
+    const dialog = document.getElementById('resume-dialog');
+    document.getElementById('resume-link').addEventListener('click', (event) => {
+      event.preventDefault();
+      dialog.showModal();
+    });
+    document.getElementById('resume-agree').addEventListener('click', () => dialog.close());
+    document.getElementById('resume-close').addEventListener('click', () => dialog.close());
+    // Clicking the dimmed backdrop (outside the box) also closes it.
+    dialog.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
+  </script>
+  {% endif %}
 </body>
 </html>
