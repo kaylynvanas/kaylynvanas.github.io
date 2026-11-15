@@ -17,8 +17,8 @@ email: kaylynvanas@gmail.com
 github: kaylynvanas
 linkedin: https://www.linkedin.com/in/kaylyn-van-as-a99678129/
 
-# Drop your resume in the repo root as resume.pdf.
-resume: /resume.pdf
+# Your résumé PDF in the repo root. The file name is what people see when they save it.
+resume: /Kaylyn-Van-As-AI-Product-Engineer.pdf
 # Small print at the foot of every page.
 footer_note: >-
   Personal information on this site is shared for recruitment purposes.
