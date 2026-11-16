@@ -37,7 +37,7 @@
       <div class="hero-row">
         <div class="profile"><img src="./images/profile.jpg" alt="Kaylyn Van As"></div>
         <div class="hero-text">
-          <p class="tagline">Hello.</p>
+          <p class="tagline">{{ site.greeting }}</p>
           {% for paragraph in site.about %}<p class="about">{{ paragraph }}</p>{% endfor %}
           <div class="actions">
             {% if site.resume != "" %}<a target="_blank" rel="noopener" class="button" id="resume-link" href="{{ site.resume }}">Download résumé (PDF)</a>{% endif %}
@@ -99,7 +99,7 @@
         <article class="feature{% unless project.video or project.image %} no-media{% endunless %}" id="project-{{ forloop.index }}">
           {% if project.video %}
           <!-- Plays silently on a loop like a GIF; the poster shows until it loads. -->
-          <div class="media media-video"><video src="{{ project.video }}" poster="{{ project.poster }}" autoplay muted loop playsinline aria-label="{{ project.media_alt }}"></video></div>
+          <div class="media"><video src="{{ project.video }}" poster="{{ project.poster }}" autoplay muted loop playsinline aria-label="{{ project.media_alt }}"></video></div>
           {% elsif project.image %}
           <div class="media"><img src="{{ project.image }}" alt="{{ project.media_alt }}" loading="lazy"></div>
           {% endif %}
