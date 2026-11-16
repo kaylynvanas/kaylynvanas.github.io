@@ -588,7 +588,7 @@ ul {
 }
 
 /* Screenshots and demo videos framed like the profile photo, with its grain. */
-/* Screenshots keep their own shape; videos get a fixed frame so the row doesn't jump as they load. */
+/* Screenshots and videos keep their own shape; a video's poster sets its size before it plays. */
 .media {
     position: relative;
     overflow: hidden;
@@ -596,19 +596,10 @@ ul {
     box-shadow: 6px 6px 0 var(--ink);
 }
 
-.media-video {
-    aspect-ratio: 16 / 10;
-}
-
 .media img,
 .media video {
     display: block;
     width: 100%;
-}
-
-.media video {
-    height: 100%;
-    object-fit: cover;
 }
 
 .media::after {

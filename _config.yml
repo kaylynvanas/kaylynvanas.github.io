@@ -1,17 +1,24 @@
 # Your details, used across the site. Leave a value blank ("") to hide that link.
 name: Kaylyn Van As
-# Used for the search-engine description; the page itself just says hello.
-tagline: Software engineer based in Cape Town.
+# Used for the search-engine description.
+tagline: AI product engineer based in Cape Town.
+# The italic opening line above the intro.
+greeting: I’m Kaylyn, an AI product engineer.
 # One entry per paragraph.
 about:
   - >-
-    I'm Kaylyn, a Cape Town-based software engineer with more than six years across data,
-    backend, full-stack and applied AI in global startups – currently building production
-    AI agents and SaaS for the UK accounting industry.
+    I have more than 6 years across data, backend, full-stack and applied AI in global startups –
+    currently building production AI agents and software for accountants at a UK fintech.
   - >-
-    I am a deeply product-minded engineer, with a desire to contribute meaningfully to the
-    African tech ecosystem. I have been praised for my attention to detail, professionalism,
-    and genuine care for customer experience.
+    I’m deeply product-minded: often the person in the room offering a different, more human
+    perspective. My experience is rooted in data, and data is my north star, whether in agent
+    evals, product decisions or platform optimisations.
+  - >-
+    I turn vague, messy problems into clear, actionable plans. I’m comfortable in ambiguity, and
+    problems with no obvious solution genuinely excite me.
+  - >-
+    My ideal work culture is high-agency and experimental, with clear expectations, support,
+    fairness, recognition and open communication.
 
 email: kaylynvanas@gmail.com
 github: kaylynvanas
