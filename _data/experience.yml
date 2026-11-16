@@ -56,12 +56,11 @@
       intro:
         - "Second generation: multi-agent month-end bookkeeping."
       items:
-        - <strong>Month-end review agents</strong> for payroll reconciliation, marketplace payouts (Shopify, Stripe, Amazon, eBay) and capital expenditure wrongly booked as an expense, plus VAT checks tuned against labelled evals.
+        - <strong>Month-end review agents</strong> for payroll reconciliation, marketplace payouts and capital expenditure wrongly booked as an expense, plus VAT checks tuned against labelled evals.
         - <strong>A payout-parsing tool</strong> that totals in code after the model’s in-context sums proved wrong. On real 800+ row payouts it matched every row to the penny.
-        - <strong>Labelled eval sets</strong> with deterministic ground truth from accountant-approved pass and fail labels, for more honest pass rates.
+        - <strong>Labelled eval sets</strong> with deterministic ground truth from accountant-approved pass and fail labels.
         - <strong>Eval-driven tuning</strong> on labelled snapshots of real client ledgers, raising agent accuracy to over 90%, plus consistency tests that caught faults before release.
-        - <strong>15-field client profiles</strong> extracted from the agent’s long-term memory and the ledger.
-        - <strong>Led two full-stack UI overhauls</strong> and the accountant onboarding flow, from inbox and ledger connection to VAT setup.
+        - <strong>Led two full-stack UI overhauls</strong> and the accountant onboarding flow.
   tech: [Python, FastAPI, Flask, TypeScript, Node.js, PostgreSQL, Airflow, Playwright, React, Claude Agent SDK, LangGraph, LangSmith, AWS, Terraform, Kubernetes, Redis, GitHub, Sentry, New Relic, Postmark]
 
 - role: Data Analyst

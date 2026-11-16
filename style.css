@@ -437,8 +437,9 @@ ul {
     list-style: circle;
 }
 
-/* Bold lead-in phrases inside card bullets; 600 is the heaviest Newsreader weight loaded. */
-.group strong {
+/* Bold phrases in card bullets and project text; 600 is the heaviest Newsreader weight loaded. */
+.group strong,
+.feature-text strong {
     font-weight: 600;
 }
 
